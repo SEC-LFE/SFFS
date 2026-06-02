@@ -212,9 +212,14 @@ class SFFSCore:
 
     def login(self, username: str, password: bytearray) -> dict:
         assert self.paths and self._auth_db
+        # Snapshot the password BEFORE authenticateUser runs — it wipes the
+        # bytearray in-place (zeros it) on return. Copying after would capture
+        # all-zero bytes, so wrap-key + provenance would derive from an empty
+        # password instead of the real one.
+        pw_snapshot = bytearray(password)
         r = authenticateUser(username, password, self._auth_db)
         if r.get("authenticated"):
-            self._session_password = bytearray(password)
+            self._session_password = pw_snapshot
             secureMemoryWipe(password)
             self.session_token = r.get("session_token")
             self._user_id = r.get("user_id")
@@ -251,6 +256,9 @@ class SFFSCore:
                     user_id=self._user_id,
                     metadata={"username": username},
                 )
+        else:
+            # Auth failed — don't keep the snapshot plaintext around.
+            secureMemoryWipe(pw_snapshot)
         return r
 
     def logout(self) -> None:

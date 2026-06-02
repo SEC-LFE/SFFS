@@ -32,12 +32,14 @@ import mouse_entropy as me
 
 @pytest.fixture(autouse=True)
 def reset_pool():
-    """Clear the internal entropy pool before each test for isolation."""
-    with me._lock:
-        me._pool.clear()
+    """Clear the internal entropy pool before each test for isolation.
+
+    Collection is gated (start_collection) — these tests exercise the pool
+    directly, so arm it for the duration of each test."""
+    me.reset_pool()
+    me.start_collection()
     yield
-    with me._lock:
-        me._pool.clear()
+    me.reset_pool()
 
 
 # ---------------------------------------------------------------------------
@@ -187,7 +189,7 @@ class TestGetEntropyPoolStatus:
 
     def test_status_keys_present(self):
         status = me.get_entropy_pool_status()
-        assert set(status.keys()) == {"bytes_collected", "target", "percentage", "is_ready"}
+        assert set(status.keys()) == {"bytes_collected", "target", "percentage", "is_ready", "is_collecting"}
 
     def test_target_is_256(self):
         status = me.get_entropy_pool_status()
@@ -229,6 +231,40 @@ class TestIsEntropyReady:
 # ---------------------------------------------------------------------------
 # Thread safety
 # ---------------------------------------------------------------------------
+
+class TestCollectionGate:
+    def test_feed_noop_when_not_armed(self):
+        me.stop_collection()
+        me.feed_mouse_entropy(10, 20)
+        with me._lock:
+            assert len(me._pool) == 0
+
+    def test_feed_collects_after_start(self):
+        me.stop_collection()
+        me.feed_mouse_entropy(1, 1)        # ignored
+        me.start_collection()
+        me.feed_mouse_entropy(2, 2)        # collected
+        with me._lock:
+            assert len(me._pool) == 32
+
+    def test_reset_clears_and_disarms(self):
+        me.start_collection()
+        for i in range(4):
+            me.feed_mouse_entropy(i, i)
+        assert me.get_entropy_pool_status()["bytes_collected"] == 128
+        me.reset_pool()
+        st = me.get_entropy_pool_status()
+        assert st["bytes_collected"] == 0
+        assert st["is_collecting"] is False
+        me.feed_mouse_entropy(9, 9)        # still no-op after reset
+        assert me.get_entropy_pool_status()["bytes_collected"] == 0
+
+    def test_status_reports_collecting_flag(self):
+        me.start_collection()
+        assert me.get_entropy_pool_status()["is_collecting"] is True
+        me.stop_collection()
+        assert me.get_entropy_pool_status()["is_collecting"] is False
+
 
 class TestThreadSafety:
     def test_concurrent_feeds_no_corruption(self):

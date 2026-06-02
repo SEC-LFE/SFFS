@@ -12,9 +12,9 @@ from pathlib import Path
 
 # Why: QFileSystemModel avoids reimplementing directory walks on FAT/exFAT USB
 from PyQt6.QtCore import QDir, Qt, pyqtSignal
+from PyQt6.QtGui import QFileSystemModel  # moved from QtWidgets in PyQt6
 from PyQt6.QtWidgets import (
     QAbstractItemView,
-    QFileSystemModel,
     QLabel,
     QMenu,
     QSplitter,
