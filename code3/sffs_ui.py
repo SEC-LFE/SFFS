@@ -649,11 +649,14 @@ class EntropyCollectorDialog(QDialog):
 
         # Buttons
         btn_row = QHBoxLayout()
-        btn_row.addStretch()
         cancel_btn = QPushButton("Cancel")
         cancel_btn.setFixedHeight(36)
         cancel_btn.setCursor(Qt.CursorShape.PointingHandCursor)
         cancel_btn.clicked.connect(self.reject)
+        reset_btn = QPushButton("Reset")
+        reset_btn.setFixedHeight(36)
+        reset_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        reset_btn.clicked.connect(self._on_reset)
         self._proceed_btn = QPushButton("Proceed with Encryption →")
         self._proceed_btn.setObjectName("primaryBtn")
         self._proceed_btn.setFixedHeight(36)
@@ -661,14 +664,34 @@ class EntropyCollectorDialog(QDialog):
         self._proceed_btn.setCursor(Qt.CursorShape.PointingHandCursor)
         self._proceed_btn.clicked.connect(self.accept)
         btn_row.addWidget(cancel_btn)
+        btn_row.addWidget(reset_btn)
+        btn_row.addStretch()
         btn_row.addWidget(self._proceed_btn)
         lay.addLayout(btn_row)
+
+        # Arm collection — this dialog IS the explicit user action to start
+        # gathering mouse entropy. Until now feed_mouse_entropy() is a no-op.
+        try:
+            from mouse_entropy import start_collection
+            start_collection()
+        except Exception:
+            pass
 
         # Poll timer
         self._timer = QTimer(self)
         self._timer.setInterval(200)
         self._timer.timeout.connect(self._refresh)
         self._timer.start()
+
+    def _on_reset(self) -> None:
+        try:
+            from mouse_entropy import reset_pool, start_collection
+            reset_pool()
+            start_collection()   # re-arm so the user can immediately re-collect
+        except Exception:
+            pass
+        self._canvas._dots.clear()
+        self._canvas.update()
 
     def _refresh(self) -> None:
         try:
@@ -694,6 +717,20 @@ class EntropyCollectorDialog(QDialog):
             )
         else:
             self._proceed_btn.setEnabled(False)
+
+    def done(self, result) -> None:  # type: ignore[override]
+        # Stop the timer and disarm collection when the dialog closes so mouse
+        # moves stop feeding the pool the moment the user is done here.
+        try:
+            self._timer.stop()
+        except Exception:
+            pass
+        try:
+            from mouse_entropy import stop_collection
+            stop_collection()
+        except Exception:
+            pass
+        super().done(result)
 
 
 # ── Pages ──────────────────────────────────────────────────────────────────
@@ -784,7 +821,7 @@ class FilesPage(QWidget):
             self._ent_bar.setMaximum(100)
             self._ent_bar.setValue(0)
             self._ent_bar.setFixedHeight(8)
-            self._ent_hint = QLabel("Move your mouse to strengthen encryption keys")
+            self._ent_hint = QLabel("Click Collect, then move your mouse to add entropy")
             self._ent_hint.setStyleSheet(f"color: {_TEXT2}; font-size: 11px; border: none; background: transparent;")
             ent_info.addWidget(ent_lbl)
             ent_info.addWidget(self._ent_bar)
@@ -792,6 +829,23 @@ class FilesPage(QWidget):
 
             ent_row.addLayout(ent_info)
             ent_card.body.addLayout(ent_row)
+
+            # Manual collect / reset controls — no entropy is gathered until the
+            # user clicks Collect (mouse moves are ignored otherwise).
+            ent_btn_row = QHBoxLayout()
+            ent_btn_row.addStretch()
+            self._ent_collect_btn = QPushButton("Collect entropy")
+            self._ent_collect_btn.setFixedHeight(32)
+            self._ent_collect_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+            self._ent_collect_btn.clicked.connect(self._on_collect_entropy)
+            self._ent_reset_btn = QPushButton("Reset")
+            self._ent_reset_btn.setFixedHeight(32)
+            self._ent_reset_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+            self._ent_reset_btn.clicked.connect(self._on_reset_entropy)
+            ent_btn_row.addWidget(self._ent_collect_btn)
+            ent_btn_row.addWidget(self._ent_reset_btn)
+            ent_card.body.addLayout(ent_btn_row)
+
             root.addWidget(ent_card)
 
             # Entropy timer
@@ -844,6 +898,20 @@ class FilesPage(QWidget):
             self._prog.setMaximum(100)
             self._prog.setVisible(False)
 
+    def _on_collect_entropy(self) -> None:
+        try:
+            from mouse_entropy import start_collection
+            start_collection()
+        except Exception:
+            pass
+
+    def _on_reset_entropy(self) -> None:
+        try:
+            from mouse_entropy import reset_pool
+            reset_pool()
+        except Exception:
+            pass
+
     def _refresh_entropy(self) -> None:
         if self._core is None:
             return
@@ -852,15 +920,21 @@ class FilesPage(QWidget):
             st = get_entropy_pool_status()
             pct = st.get("percentage", 0)
             ready = st.get("is_ready", False)
+            collecting = st.get("is_collecting", False)
             self._ent_bar.setValue(pct)
             self._ent_bar.setProperty("ready", "true" if ready else "false")
             self._ent_bar.style().unpolish(self._ent_bar)
             self._ent_bar.style().polish(self._ent_bar)
+            # Collect button is only meaningful while not already armed/ready.
+            self._ent_collect_btn.setEnabled(not collecting and not ready)
             if ready:
                 self._ent_hint.setText("✓ Entropy ready — encryption keys fully randomized")
                 self._ent_hint.setStyleSheet(f"color: {_SECURE}; font-size: 11px; border: none; background: transparent;")
+            elif collecting:
+                self._ent_hint.setText(f"Collecting — move your mouse… {pct}%")
+                self._ent_hint.setStyleSheet(f"color: {_CRYPTO}; font-size: 11px; border: none; background: transparent;")
             else:
-                self._ent_hint.setText(f"Move your mouse to strengthen keys… {pct}%")
+                self._ent_hint.setText("Click Collect, then move your mouse to add entropy")
                 self._ent_hint.setStyleSheet(f"color: {_TEXT2}; font-size: 11px; border: none; background: transparent;")
         except Exception:
             pass
@@ -1842,7 +1916,7 @@ class LoginWindow(QDialog):
         self._pw.setPlaceholderText("Enter password")
         self._pw.setEchoMode(QLineEdit.EchoMode.Password)
         self._pw.setFixedHeight(42)
-        self._pw.returnPressed.connect(self._try_login)
+        self._pw.returnPressed.connect(self._on_primary_clicked)
         card_lay.addWidget(self._pw)
 
         # P3-B: live policy feedback
@@ -1881,8 +1955,9 @@ class LoginWindow(QDialog):
         login_btn.setFixedHeight(44)
         login_btn.setFont(_semibold(13))
         login_btn.setCursor(Qt.CursorShape.PointingHandCursor)
-        login_btn.clicked.connect(self._try_login)
+        login_btn.clicked.connect(self._on_primary_clicked)
         card_lay.addWidget(login_btn)
+        self._login_btn = login_btn
 
         # Register link row
         reg_row = QHBoxLayout()
@@ -1895,12 +1970,14 @@ class LoginWindow(QDialog):
             f"QPushButton:hover {{ color: #58a6ff; }}"
         )
         reg_btn.setCursor(Qt.CursorShape.PointingHandCursor)
-        reg_btn.clicked.connect(self._enter_register_mode)
+        reg_btn.clicked.connect(self._toggle_register_mode)
         reg_row.addStretch()
         reg_row.addWidget(reg_lbl)
         reg_row.addWidget(reg_btn)
         reg_row.addStretch()
         card_lay.addLayout(reg_row)
+        self._reg_lbl = reg_lbl
+        self._reg_btn = reg_btn
 
         # Security note
         note = QLabel("🔒  All credentials stay on-device")
@@ -1950,18 +2027,42 @@ class LoginWindow(QDialog):
                 self._pw.clear()
                 self._pw.setFocus()
 
-    def _enter_register_mode(self) -> None:
+    def _on_primary_clicked(self) -> None:
+        # The primary button does whatever mode we are in. Without this, a user
+        # who clicked "Register account" (which only reveals the confirm field)
+        # and then clicked the primary button would silently trigger a LOGIN for
+        # an account that was never created — surfacing "Invalid username or
+        # password" and looking like registration is broken.
+        if self._register_mode:
+            self._try_register()
+        else:
+            self._try_login()
+
+    def _toggle_register_mode(self) -> None:
         if not self._register_mode:
+            # Enter register mode: reveal confirm field, retarget the primary
+            # button to "Create account" so the whole flow is one obvious click.
             self._register_mode = True
             self._pw2_lbl.setVisible(True)
             self._pw2.setVisible(True)
+            self._login_btn.setText("Create account")
+            self._reg_lbl.setText("Have an account?")
+            self._reg_btn.setText("Back to login")
             self._err.setStyleSheet(
                 f"color: {_ACCENT}; font-size: 11px; border: none; background: transparent;"
             )
-            self._err.setText("Fill confirm password, then click Register account again")
+            self._err.setText("Enter a password, confirm it, then click Create account")
             self._pw2.setFocus()
         else:
-            self._try_register()
+            # Leave register mode, back to login.
+            self._register_mode = False
+            self._pw2_lbl.setVisible(False)
+            self._pw2.setVisible(False)
+            self._pw2.clear()
+            self._login_btn.setText("Unlock")
+            self._reg_lbl.setText("New user?")
+            self._reg_btn.setText("Register account")
+            self._err.setText("")
 
     def _try_register(self) -> None:
         self._inject_paths()
@@ -1998,7 +2099,12 @@ class LoginWindow(QDialog):
             self._err.setText("✓ Account created — click Unlock to log in")
             self._pw2.setVisible(False)
             self._pw2_lbl.setVisible(False)
+            self._pw2.clear()
             self._register_mode = False
+            self._login_btn.setText("Unlock")
+            self._reg_lbl.setText("New user?")
+            self._reg_btn.setText("Register account")
+            self._pw.setFocus()
         else:
             self._err.setStyleSheet(
                 f"color: {_DANGER}; font-size: 11px; border: none; background: transparent;"

@@ -2,6 +2,11 @@
 Mouse movement entropy — mixed with OS CSPRNG for per-session file keys.
 
 WHY: Adds unpredictable user-specific input on top of secrets.token_bytes.
+
+Collection is MANUAL and gated: nothing is collected until the user explicitly
+arms it via start_collection() (wired to a "Collect entropy" button). Mouse moves
+only feed the pool while collection is armed; it auto-disarms once the target is
+reached. reset_pool() lets the user clear and re-collect.
 """
 
 from __future__ import annotations
@@ -13,13 +18,48 @@ import time
 
 _lock = threading.Lock()
 _pool = bytearray()
+_collecting = False        # armed only after user clicks "Collect entropy"
+
+_ENTROPY_TARGET = 256
+
+
+def start_collection() -> None:
+    """Arm collection — call from the GUI button. Until this is called,
+    feed_mouse_entropy() is a no-op so no mouse data is ever gathered."""
+    global _collecting
+    with _lock:
+        _collecting = True
+
+
+def stop_collection() -> None:
+    """Disarm collection without clearing the pool already gathered."""
+    global _collecting
+    with _lock:
+        _collecting = False
+
+
+def reset_pool() -> None:
+    """User reset — discard all collected entropy and disarm collection."""
+    global _collecting
+    with _lock:
+        _pool.clear()
+        _collecting = False
+
+
+def is_collecting() -> bool:
+    with _lock:
+        return _collecting
 
 
 def feed_mouse_entropy(x: int, y: int) -> None:
-    """Call from GUI mouse-move handler; updates an internal pool (bounded)."""
+    """Call from GUI mouse-move handler. No-op unless collection is armed
+    (start_collection()). The pool stays bounded; arm/disarm and reset are
+    driven explicitly by the user, not automatically."""
     t = time.monotonic_ns()
     chunk = hashlib.sha256(f"{x}:{y}:{t}".encode()).digest()
     with _lock:
+        if not _collecting:
+            return
         _pool.extend(chunk)
         if len(_pool) > 8192:
             del _pool[:-8192]
@@ -44,17 +84,16 @@ def session_random_bytes(n: int) -> bytes:
     return bytes(out[:n])
 
 
-_ENTROPY_TARGET = 256
-
-
 def get_entropy_pool_status() -> dict:
     with _lock:
         size = len(_pool)
+        collecting = _collecting
     return {
         "bytes_collected": size,
         "target": _ENTROPY_TARGET,
         "percentage": min(100, int(size / _ENTROPY_TARGET * 100)),
         "is_ready": size >= _ENTROPY_TARGET,
+        "is_collecting": collecting,
     }
 
 
