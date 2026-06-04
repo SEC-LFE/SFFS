@@ -1,0 +1,4421 @@
+{
+  "nodes": [
+    {
+      "id": "code1_f01_generate_key_pairs",
+      "label": "RSA-2048 Key Pair Generation",
+      "file_type": "code",
+      "source_file": "code1/f01_generate_key_pairs.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code1_f02_encrypt_file",
+      "label": "AES-256-GCM File Encryption",
+      "file_type": "code",
+      "source_file": "code1/f02_encrypt_file.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code1_f03_decrypt_file",
+      "label": "SFFS File Decryption with Integrity Check",
+      "file_type": "code",
+      "source_file": "code1/f03_decrypt_file.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code1_f04_generate_hash",
+      "label": "Cryptographic Hash Generation",
+      "file_type": "code",
+      "source_file": "code1/f04_generate_hash.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code1_f05_verify_hash",
+      "label": "Constant-Time Hash Verification",
+      "file_type": "code",
+      "source_file": "code1/f05_verify_hash.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code1_f06_secure_key_storage",
+      "label": "Secure RSA Private Key Storage with PBKDF2/Argon2id + AES-GCM",
+      "file_type": "code",
+      "source_file": "code1/f06_secure_key_storage.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code2_f07_create_isolated_sandbox",
+      "label": "Isolated Sandbox Directory Creation and DOD 5220.22-M Wipe",
+      "file_type": "code",
+      "source_file": "code2/f07_create_isolated_sandbox.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code2_f08_secure_memory_wipe",
+      "label": "Secure Memory Wipe with bytearray",
+      "file_type": "code",
+      "source_file": "code2/f08_secure_memory_wipe.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code2_f09_authenticate_user",
+      "label": "Argon2id User Authentication with Lockout Policy",
+      "file_type": "code",
+      "source_file": "code2/f09_authenticate_user.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code2_f10_monitor_process",
+      "label": "Debugger Detection and Process Monitoring",
+      "file_type": "code",
+      "source_file": "code2/f10_monitor_process.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code2_f11_write_audit_log",
+      "label": "Encrypted Audit Logger with Hash Chain Integrity",
+      "file_type": "code",
+      "source_file": "code2/f11_write_audit_log.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code2_f12_emergency_lock",
+      "label": "Emergency Lock with Sandbox Destroy Memory Wipe Session Terminate",
+      "file_type": "code",
+      "source_file": "code2/f12_emergency_lock.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code2_os_isolation",
+      "label": "OS-Level Isolation Detection (AppArmor/Windows Job)",
+      "file_type": "code",
+      "source_file": "code2/os_isolation.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code2_secure_app_launcher",
+      "label": "Secure External Viewer Launcher with Manifest Policy",
+      "file_type": "code",
+      "source_file": "code2/secure_app_launcher.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code2_windows_job_wrapper",
+      "label": "Windows Job Object Isolation Wrapper",
+      "file_type": "code",
+      "source_file": "code2/windows_job_wrapper.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code3_f13_init_drive_detection",
+      "label": "USB Drive Detection and Path Resolution",
+      "file_type": "code",
+      "source_file": "code3/f13_init_drive_detection.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code3_f14_ui_dashboard",
+      "label": "PyQt6 SFFS Dashboard with DragDrop and Cloud Backup",
+      "file_type": "code",
+      "source_file": "code3/f14_ui_dashboard.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "aes_256_gcm",
+      "label": "AES-256-GCM Authenticated Encryption",
+      "file_type": "rationale",
+      "source_file": "code1/f02_encrypt_file.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "rsa_2048",
+      "label": "RSA-2048 Asymmetric Cryptosystem",
+      "file_type": "rationale",
+      "source_file": "code1/f01_generate_key_pairs.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "sffs_file_format",
+      "label": "SFFS Binary File Format",
+      "file_type": "rationale",
+      "source_file": "code1/f02_encrypt_file.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "sha256_hash",
+      "label": "SHA-256 Cryptographic Hash Function",
+      "file_type": "rationale",
+      "source_file": "code1/f04_generate_hash.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "argon2id",
+      "label": "Argon2id Memory-Hard Password Hashing",
+      "file_type": "rationale",
+      "source_file": "code2/f09_authenticate_user.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "pbkdf2",
+      "label": "PBKDF2 Key Derivation Function (Fallback)",
+      "file_type": "rationale",
+      "source_file": "code1/f06_secure_key_storage.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "dod_5220_22_m",
+      "label": "DOD 5220.22-M 3-Pass Data Erasure Standard",
+      "file_type": "rationale",
+      "source_file": "code2/f07_create_isolated_sandbox.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "provenance_token",
+      "label": "Provenance Token for Pre-Decryption File Verification",
+      "file_type": "rationale",
+      "source_file": "code1/f02_encrypt_file.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "hash_chain_integrity",
+      "label": "Hash Chain for Audit Log Tamper Detection",
+      "file_type": "rationale",
+      "source_file": "code2/f11_write_audit_log.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "constant_time_comparison",
+      "label": "Constant-Time Comparison for Timing Attack Prevention",
+      "file_type": "rationale",
+      "source_file": "code1/f05_verify_hash.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "exponential_backoff_lockout",
+      "label": "Exponential Backoff Account Lockout Policy",
+      "file_type": "rationale",
+      "source_file": "code2/f09_authenticate_user.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "windows_job_object",
+      "label": "Windows Job Object Process Confinement",
+      "file_type": "rationale",
+      "source_file": "code2/windows_job_wrapper.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "sandbox_isolation",
+      "label": "Isolated Sandbox Directory for Decrypted Files",
+      "file_type": "rationale",
+      "source_file": "code2/f07_create_isolated_sandbox.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "defense_in_depth",
+      "label": "Defense-in-Depth Architecture: Crypto + Sandbox + Auth + Audit",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "readme",
+      "label": "SFFS Project README",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code3_sffs_ui",
+      "label": "SFFS Modern UI",
+      "file_type": "code",
+      "source_file": "code3/sffs_ui.py"
+    },
+    {
+      "id": "code3_f15_file_explorer",
+      "label": "File Manager Explorer",
+      "file_type": "code",
+      "source_file": "code3/f15_file_manager_explorer.py"
+    },
+    {
+      "id": "code3_f16_cloud_sync",
+      "label": "Google Drive Cloud Sync",
+      "file_type": "code",
+      "source_file": "code3/f16_cloud_sync.py"
+    },
+    {
+      "id": "code3_f17_config_loader",
+      "label": "Encrypted Config Loader",
+      "file_type": "code",
+      "source_file": "code3/f17_config_loader.py"
+    },
+    {
+      "id": "code3_f18_thread_controller",
+      "label": "Qt Worker Thread Controller",
+      "file_type": "code",
+      "source_file": "code3/f18_thread_controller.py"
+    },
+    {
+      "id": "code3_mouse_entropy",
+      "label": "Mouse Movement Entropy Pool",
+      "file_type": "code",
+      "source_file": "code3/mouse_entropy.py"
+    },
+    {
+      "id": "code3_sandbox_viewer",
+      "label": "Sandbox File Viewer",
+      "file_type": "code",
+      "source_file": "code3/sandbox_viewer.py"
+    },
+    {
+      "id": "code3_run_student3",
+      "label": "Student 3 Demo Runner",
+      "file_type": "code",
+      "source_file": "code3/run_student3.py"
+    },
+    {
+      "id": "main_code_core",
+      "label": "SFFSCore Orchestrator",
+      "file_type": "code",
+      "source_file": "main-code/sffs_core.py"
+    },
+    {
+      "id": "main_code_entry_point",
+      "label": "Main Entry Point",
+      "file_type": "code",
+      "source_file": "main-code/main.py"
+    },
+    {
+      "id": "main_code_isolated_worker",
+      "label": "Isolated Decrypt Worker",
+      "file_type": "code",
+      "source_file": "main-code/isolated_worker.py"
+    },
+    {
+      "id": "main_code_provenance_table",
+      "label": "Provenance Token Registry",
+      "file_type": "code",
+      "source_file": "main-code/provenance_table.py"
+    },
+    {
+      "id": "main_code_wrap_store",
+      "label": "Encrypted Wrap Store",
+      "file_type": "code",
+      "source_file": "main-code/wrap_store.py"
+    },
+    {
+      "id": "scripts_usb_installer",
+      "label": "USB Installer GUI",
+      "file_type": "code",
+      "source_file": "scripts/sffs_usb_installer.py"
+    },
+    {
+      "id": "scripts_usb_setup",
+      "label": "USB Setup and Verify",
+      "file_type": "code",
+      "source_file": "scripts/sffs_usb_setup.py"
+    },
+    {
+      "id": "scripts_reset_data",
+      "label": "Reset SFFS Data",
+      "file_type": "code",
+      "source_file": "scripts/reset_sffs_data.py"
+    },
+    {
+      "id": "scripts_install_deps",
+      "label": "Dependency Installer",
+      "file_type": "code",
+      "source_file": "scripts/sffs_install_deps.py"
+    },
+    {
+      "id": "scripts_fetch_viewers",
+      "label": "Portable Viewer Downloader",
+      "file_type": "code",
+      "source_file": "scripts/fetch_missing_viewers.ps1"
+    },
+    {
+      "id": "test_cloud_backup_cloud_backup_e2e_test",
+      "label": "Cloud Backup E2E Test",
+      "file_type": "code",
+      "source_file": "scripts/test_cloud_backup.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_cloud_backup_mock_mock_test_suite",
+      "label": "Cloud Backup Mock Test Suite",
+      "file_type": "code",
+      "source_file": "scripts/test_cloud_backup_mock.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_cloud_backup_mock_unencrypted_keystore_check",
+      "label": "Unencrypted Keystore Upload Block",
+      "file_type": "code",
+      "source_file": "scripts/test_cloud_backup_mock.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_cloud_backup_mock_path_traversal_rejection",
+      "label": "Zip Path Traversal Rejection",
+      "file_type": "code",
+      "source_file": "scripts/test_cloud_backup_mock.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "verify_usb_launchers_manifest_resolve_probe",
+      "label": "USB Launcher Manifest Resolution Probe",
+      "file_type": "code",
+      "source_file": "scripts/verify_usb_launchers.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "generate_icon_shield_lock_icon",
+      "label": "SFFS Shield+Lock Icon",
+      "file_type": "code",
+      "source_file": "scripts/usb-pack/generate_icon.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "hidden_volume_partition_discovery",
+      "label": "Hidden Partition Discovery API",
+      "file_type": "code",
+      "source_file": "scripts/usb-pack/hidden_volume.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "hidden_volume_volume_mount_api",
+      "label": "Volume Mount/Unmount API",
+      "file_type": "code",
+      "source_file": "scripts/usb-pack/hidden_volume.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "launcher_main_usb_launcher_entry",
+      "label": "USB Launcher Entry Point",
+      "file_type": "code",
+      "source_file": "scripts/usb-pack/launcher_main.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "launcher_main_four_partition_strategies",
+      "label": "Four-Strategy Partition Discovery",
+      "file_type": "code",
+      "source_file": "scripts/usb-pack/launcher_main.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "setup_usb_standalone_one_click_installer",
+      "label": "USB One-Click Standalone Installer",
+      "file_type": "code",
+      "source_file": "scripts/usb-pack/setup_usb_standalone.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "sffs_usb_pack_full_usb_deployment",
+      "label": "Full USB Deployment Automation",
+      "file_type": "code",
+      "source_file": "scripts/usb-pack/sffs_usb_pack.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "conftest_pytest_syspath_setup",
+      "label": "Pytest sys.path configuration",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_integration_encrypt_decrypt_roundtrip",
+      "label": "Encrypt-Decrypt Roundtrip Integration Test",
+      "file_type": "code",
+      "source_file": "tests/test_integration.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_integration_ipc_replay_protection",
+      "label": "IPC Replay Protection Tests",
+      "file_type": "code",
+      "source_file": "tests/test_integration.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_integration_security_fix_regression",
+      "label": "Security Fix Regression Tests",
+      "file_type": "code",
+      "source_file": "tests/test_integration.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_integration_hmac_file_binding",
+      "label": "HMAC File Binding Check Test",
+      "file_type": "code",
+      "source_file": "tests/test_integration.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_integration_audit_log_retry",
+      "label": "Audit Log SQLite Retry Test",
+      "file_type": "code",
+      "source_file": "tests/test_integration.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_manifest_resolve_all_apps_manifest_route_validation",
+      "label": "Manifest Route Validation Test",
+      "file_type": "code",
+      "source_file": "tests/test_manifest_resolve_all_apps.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_mouse_entropy_entropy_pool_tests",
+      "label": "Mouse Entropy Pool Tests",
+      "file_type": "code",
+      "source_file": "tests/test_mouse_entropy.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_mouse_entropy_thread_safety_tests",
+      "label": "Entropy Pool Thread Safety Tests",
+      "file_type": "code",
+      "source_file": "tests/test_mouse_entropy.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_sandbox_security_sandbox_structure_tests",
+      "label": "Sandbox Structure Tests",
+      "file_type": "code",
+      "source_file": "tests/test_sandbox_security.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_sandbox_security_isolation_detection_tests",
+      "label": "OS Isolation Detection Tests",
+      "file_type": "code",
+      "source_file": "tests/test_sandbox_security.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_sandbox_security_launcher_policy_tests",
+      "label": "Launcher Policy Enforcement Tests",
+      "file_type": "code",
+      "source_file": "tests/test_sandbox_security.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_sandbox_security_worker_path_policy_tests",
+      "label": "Worker Path Policy Tests",
+      "file_type": "code",
+      "source_file": "tests/test_sandbox_security.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_sandbox_security_fix_verification_tests",
+      "label": "Five Security Fix Verification Tests",
+      "file_type": "code",
+      "source_file": "tests/test_sandbox_security.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_secure_launcher_policy_external_viewer_termination",
+      "label": "External Viewer PID Termination Test",
+      "file_type": "code",
+      "source_file": "tests/test_secure_launcher_policy.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_student1_crypto_module_tests",
+      "label": "Student 1 Crypto Module Tests",
+      "file_type": "code",
+      "source_file": "tests/test_student1.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_student2_security_module_tests",
+      "label": "Student 2 Security Module Tests",
+      "file_type": "code",
+      "source_file": "tests/test_student2.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_student2_auth_timing_constant",
+      "label": "Auth Timing Constant-Time Test",
+      "file_type": "code",
+      "source_file": "tests/test_student2.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_student3_system_architect_tests",
+      "label": "Student 3 System Architect Tests",
+      "file_type": "code",
+      "source_file": "tests/test_student3.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_windows_job_lazy_activation_job_activation_tests",
+      "label": "Windows Job Object Lazy Activation Tests",
+      "file_type": "code",
+      "source_file": "tests/test_windows_job_lazy_activation.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_worker_hardening_ipc_hardening_tests",
+      "label": "Worker IPC Hardening Tests",
+      "file_type": "code",
+      "source_file": "tests/test_worker_hardening.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "tests___init___test_suite_init",
+      "label": "SFFS Test Suite Init",
+      "file_type": "code",
+      "source_file": "tests/__init__.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "requirements_txt_unified_deps",
+      "label": "Unified Dependency Entrypoint",
+      "file_type": "code",
+      "source_file": "requirements.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code1_readme_sffs_binary_format",
+      "label": "SFFS Binary Format Specification",
+      "file_type": "document",
+      "source_file": "code1/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code1_readme_aes256gcm_rationale",
+      "label": "AES-256-GCM Rationale",
+      "file_type": "rationale",
+      "source_file": "code1/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code1_readme_iv_security_principle",
+      "label": "IV Uniqueness Principle",
+      "file_type": "concept",
+      "source_file": "code1/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code1_readme_hash_pre_integrity",
+      "label": "Hash-Before-Encryption Integrity Proof",
+      "file_type": "concept",
+      "source_file": "code1/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "sffs",
+      "label": "Smart File Fortify System",
+      "file_type": "concept",
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "claudemd_critical_rules",
+      "label": "SFFS Critical Development Rules",
+      "file_type": "rationale",
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Always run pytest after edits; never commit directly to master; use conventional commits; never hardcode secrets; each student owns their module; OS isolation markers for --secure-required mode; block writes to sffs_data/, security/, .pem, .key files"
+    },
+    {
+      "id": "claudemd_ci_pipelines",
+      "label": "CI Pipeline Configuration",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code2_readme_student2_module",
+      "label": "Student 2 System-Security Module",
+      "file_type": "code",
+      "source_file": "code2/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code2_readme_f09_auth",
+      "label": "F-09 Argon2id Authentication",
+      "file_type": "code",
+      "source_file": "code2/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code3_readme_student3_module",
+      "label": "Student 3 System Architect Module",
+      "file_type": "code",
+      "source_file": "code3/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code3_readme_f13_drive_detection",
+      "label": "F-13 USB Drive Detection",
+      "file_type": "code",
+      "source_file": "code3/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code3_readme_google_drive",
+      "label": "Google Drive Backup Setup",
+      "file_type": "concept",
+      "source_file": "code3/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_apireference_all_functions",
+      "label": "F-01 to F-18 API Reference",
+      "file_type": "document",
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_apireference_f01_keygen",
+      "label": "F-01 generateKeyPairs",
+      "file_type": "code",
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_apireference_f02_encrypt",
+      "label": "F-02 encryptFile",
+      "file_type": "code",
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_apireference_f03_decrypt",
+      "label": "F-03 decryptFile",
+      "file_type": "code",
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_apireference_f04_hash",
+      "label": "F-04 generateHash",
+      "file_type": "code",
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_apireference_f06_keystore",
+      "label": "F-06 Secure Key Storage",
+      "file_type": "code",
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_apireference_f07_sandbox",
+      "label": "F-07 Isolated Sandbox",
+      "file_type": "code",
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_apireference_f08_memory_wipe",
+      "label": "F-08 secureMemoryWipe",
+      "file_type": "code",
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_apireference_f09_auth",
+      "label": "F-09 Authenticate User (Argon2id)",
+      "file_type": "code",
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_apireference_f10_monitor",
+      "label": "F-10 Process Monitor",
+      "file_type": "code",
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_apireference_f11_audit",
+      "label": "F-11 AuditLogger",
+      "file_type": "code",
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_apireference_f12_emergency_lock",
+      "label": "F-12 Emergency Lock",
+      "file_type": "code",
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_apireference_f14_ui",
+      "label": "F-14 UI Dashboard (PyQt6)",
+      "file_type": "code",
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_apireference_f15_fm",
+      "label": "F-15 File Manager Explorer",
+      "file_type": "code",
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_apireference_f16_cloud",
+      "label": "F-16 Cloud Sync (Google Drive)",
+      "file_type": "code",
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_apireference_f17_config",
+      "label": "F-17 Config Loader",
+      "file_type": "code",
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_apireference_f18_threads",
+      "label": "F-18 Thread Controller",
+      "file_type": "code",
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_architecture_system_overview",
+      "label": "SFFS Architecture Overview",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_architecture_module_map",
+      "label": "Three-Student Module Map",
+      "file_type": "concept",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Three-student team: crypto (code1/), runtime security (code2/), USB/UI/cloud (code3/) — each independently developed, integrated via sffs_core.py"
+    },
+    {
+      "id": "docs_architecture_init_sequence",
+      "label": "7-Step Initialization Sequence",
+      "file_type": "concept",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Initialization order matters: drive detection first (establishes paths), then config, auth DB, audit logger, process monitor, sandbox (post-login), USB removal watchdog"
+    },
+    {
+      "id": "docs_architecture_encrypt_flow",
+      "label": "Encrypt Operation Flow",
+      "file_type": "concept",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Ensure RSA keypair + keystore -> random 32-byte AES key -> encryptFile -> .sffs -> wrapAESKey -> .aeswrap -> generateHash -> audit log. AES key wiped from memory after use."
+    },
+    {
+      "id": "docs_architecture_worker_policy",
+      "label": "Decrypt Worker Boundary & Policy",
+      "file_type": "rationale",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "isolated_worker.py as dedicated decrypt process; worker_policy.json constrains allowed actions and output root; signed HMAC-SHA256 envelope with short TTL prevents replay; emergency triggers terminate worker processes before global lock"
+    },
+    {
+      "id": "docs_architecture_sffs_format",
+      "label": ".sffs Binary File Format",
+      "file_type": "code",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Custom binary format: magic SFFS + version 0x01 + IV(16) + auth_tag(16) + SHA-256(32) + original_size(8) + ciphertext — enables self-contained encrypted files with integrity verification"
+    },
+    {
+      "id": "docs_securitymodel_threat_model",
+      "label": "SFFS Threat Model",
+      "file_type": "rationale",
+      "source_file": "docs/SECURITY_MODEL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Adversaries: malware on host, physical attacker with USB access, network eavesdroppers, local debugging tools. Assumption: OS may be hostile; decrypted files must not land on untrusted host paths. Out of scope: hardware side-channels, full memory forensics, quantum attacks"
+    },
+    {
+      "id": "docs_securitymodel_aes256_gcm",
+      "label": "AES-256-GCM Encryption",
+      "file_type": "rationale",
+      "source_file": "docs/SECURITY_MODEL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "File confidentiality + integrity in one pass. GCM chosen over CBC because GCM provides authenticated encryption (both confidentiality and tamper detection) whereas CBC only provides confidentiality. GCM tag + stored SHA-256 over plaintext for end-to-end check."
+    },
+    {
+      "id": "docs_securitymodel_argon2id",
+      "label": "Argon2id Password Hashing",
+      "file_type": "rationale",
+      "source_file": "docs/SECURITY_MODEL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Winner of Password Hashing Competition; memory-hard — resistant to GPU and ASIC brute-force; preferred over PBKDF2 or bcrypt for new systems. OWASP 2023 parameters: time_cost=3, memory_cost=65536 (64MB), parallelism=4"
+    },
+    {
+      "id": "docs_securitymodel_attack_table",
+      "label": "Attack Mitigations Matrix",
+      "file_type": "document",
+      "source_file": "docs/SECURITY_MODEL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_securitymodel_regression_tests",
+      "label": "Security Regression Test Checklist",
+      "file_type": "code",
+      "source_file": "docs/SECURITY_MODEL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "6 automated tests in test_worker_hardening.py: signed IPC envelope (valid/forged), replay staleness, worker output confinement, action minimization, path traversal escape guard"
+    },
+    {
+      "id": "docs_securitymodel_os_isolation",
+      "label": "OS-Level Isolation v1",
+      "file_type": "code",
+      "source_file": "docs/SECURITY_MODEL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Linux: AppArmor profile sffs-main-code loaded via aa-exec. Windows: Job Object wrapper with KILL_ON_JOB_CLOSE and active-process cap. Owned under code2/ (Student 2). --secure-required flag fails closed when confinement markers missing"
+    },
+    {
+      "id": "docs_demoday_plan",
+      "label": "Demo Day Implementation Plan",
+      "file_type": "document",
+      "source_file": "docs/DEMO_DAY_PLAN.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_demoday_p1_bugs",
+      "label": "P1 Demo-Killing Bug Fixes",
+      "file_type": "code",
+      "source_file": "docs/DEMO_DAY_PLAN.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "NameError in authenticateUser (pw instantiation order) -> timing oracle vuln. UI freeze from sync encrypt/decrypt -> WorkerThread. Hardcoded demo_user prefill removed"
+    },
+    {
+      "id": "docs_demoday_p4_security",
+      "label": "P4 Security Fixes",
+      "file_type": "code",
+      "source_file": "docs/DEMO_DAY_PLAN.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Master password moved off CLI args to stdin (visible in ps aux). WrapStore temp file moved inside sandbox (not /tmp). chmod 0o700 on sandbox subdirs"
+    },
+    {
+      "id": "plan_team",
+      "label": "Project Team & Supervisor",
+      "file_type": "concept",
+      "source_file": "docs/planning/plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": "Ibraheem Snineh, Karim Taha, Mazin Alsarahin"
+    },
+    {
+      "id": "plan_phases",
+      "label": "8-Phase Build Plan",
+      "file_type": "document",
+      "source_file": "docs/planning/plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Phase 0 (Scaffold) -> P1 (Crypto) -> P2 (Security) -> P3 (Architect) -> P4 (Integration) -> P5 (Runners/Tests) -> P6 (Docs) -> P7 (USB Install). Each verified before next."
+    },
+    {
+      "id": "plan_hardening",
+      "label": "Post-Build Hardening Plan",
+      "file_type": "concept",
+      "source_file": "docs/planning/plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "P1: OS isolation under code2/ ownership; P2: CI quality; P3: .aeswrap hardening (bind metadata, key commitment); P4: hash-chain audit entries, replay-cache; P5: portable USB viewer policy with allowlist"
+    },
+    {
+      "id": "maincode_readme_sffscore",
+      "label": "SFFSCore Orchestrator",
+      "file_type": "code",
+      "source_file": "main-code/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "maincode_readme_security_layers",
+      "label": "Multi-Layer Security Summary",
+      "file_type": "concept",
+      "source_file": "main-code/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Files: AES-256-GCM; Key wrap: RSA-OAEP; Private key: PBKDF2+AES-GCM keystore; Passwords: Argon2id; Integrity: SHA-256+GCM tag+verifyHash"
+    },
+    {
+      "id": "docs_developer_guide",
+      "label": "Developer Guide & Style Rules",
+      "file_type": "document",
+      "source_file": "docs/DEVELOPER_GUIDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "pathlib.Path for all paths; sensitive passwords as bytearray; no hardcoded drive letters; cross-platform checks; all imports need WHY comments; every function needs Args/Returns/Raises/Security docstrings"
+    },
+    {
+      "id": "docs_usb_installation",
+      "label": "USB Installation Guide",
+      "file_type": "document",
+      "source_file": "docs/USB_INSTALLATION.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_planning_p00_scaffold",
+      "label": "Phase 0: Project Scaffold",
+      "file_type": "document",
+      "source_file": "docs/planning/p00_scaffold.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_planning_p01_student1",
+      "label": "Phase 1: Student 1 Crypto Module",
+      "file_type": "document",
+      "source_file": "docs/planning/p01_student1.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "All 6 crypto functions (f01-f06): RSA key gen, AES-GCM encrypt/decrypt, SHA-256 hash, hash verification, secure key storage. Every file independently runnable with __main__ demo block."
+    },
+    {
+      "id": "docs_planning_p02_student2",
+      "label": "Phase 2: Student 2 Security Module",
+      "file_type": "document",
+      "source_file": "docs/planning/p02_student2.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "6 security functions (f07-f12): sandbox, memory wipe, Argon2id auth, process monitor, audit log, emergency lock. Design principle: degrade gracefully — if security op fails, lock down."
+    },
+    {
+      "id": "docs_planning_p03_student3",
+      "label": "Phase 3: Student 3 Architect Module",
+      "file_type": "document",
+      "source_file": "docs/planning/p03_student3.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "6 architect functions (f13-f18): USB detection, PyQt6 UI, file manager, cloud sync, config, threads. Key design: importable without display server."
+    },
+    {
+      "id": "docs_planning_p04_integration",
+      "label": "Phase 4: Main Integration",
+      "file_type": "document",
+      "source_file": "docs/planning/p04_main_integration.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Wires all 18 functions via SFFSCore orchestrator. Initialization order, shutdown order, encrypt/decrypt operations, threat/USB callbacks all managed centrally."
+    },
+    {
+      "id": "docs_planning_p05_runners",
+      "label": "Phase 5: Runners & Tests",
+      "file_type": "document",
+      "source_file": "docs/planning/p05_runners.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_planning_p06_docs",
+      "label": "Phase 6: Documentation",
+      "file_type": "document",
+      "source_file": "docs/planning/p06_docs.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_planning_p07_usb_install",
+      "label": "Phase 7: USB Installation Guide",
+      "file_type": "document",
+      "source_file": "docs/planning/p07_usb_install.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "maincode_requirements_deps",
+      "label": "Requirements Dependencies",
+      "file_type": "document",
+      "source_file": "main-code/requirements.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "maincode_requirements_lock",
+      "label": "Locked Dependencies (pip-compile)",
+      "file_type": "document",
+      "source_file": "main-code/requirements-lock.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code1_sample_output",
+      "label": "Sample Test Output",
+      "file_type": "code",
+      "source_file": "code1/test_output/sample.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_sffs",
+      "label": "SFFS (Smart File Fortify System)",
+      "file_type": "concept",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_aes_256",
+      "label": "AES-256",
+      "file_type": "concept",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_rsa",
+      "label": "RSA",
+      "file_type": "concept",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_sha_256",
+      "label": "SHA-256",
+      "file_type": "concept",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_argon2id",
+      "label": "Argon2id",
+      "file_type": "concept",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_pbkdf2",
+      "label": "PBKDF2",
+      "file_type": "concept",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_isolated_execution",
+      "label": "Isolated Execution Environment",
+      "file_type": "rationale",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Decrypted data accessible only within the application; prevents host-system malware from reading sensitive data during active file usage"
+    },
+    {
+      "id": "converted_google_drive_api",
+      "label": "Google Drive API",
+      "file_type": "concept",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": "https://developers.google.com/drive",
+      "captured_at": null,
+      "author": "Google Developers",
+      "contributor": null
+    },
+    {
+      "id": "converted_pyqt6",
+      "label": "PyQt6",
+      "file_type": "concept",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": "https://www.riverbankcomputing.com/static/Docs/PyQt6/",
+      "captured_at": null,
+      "author": "Riverbank Computing",
+      "contributor": null
+    },
+    {
+      "id": "converted_incremental_development",
+      "label": "Incremental Development Model",
+      "file_type": "rationale",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Security-critical systems benefit from early prototyping and iterative testing; each increment focuses on a specific module (UI, authentication, encryption, cloud backup); risks identified before full system integration"
+    },
+    {
+      "id": "converted_sffscore",
+      "label": "SFFSCore Orchestrator",
+      "file_type": "code",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_isolated_worker",
+      "label": "Isolated Worker Process",
+      "file_type": "rationale",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Sensitive decryption performed outside the main GUI process to enhance security and prevent memory scraping"
+    },
+    {
+      "id": "converted_process_monitor",
+      "label": "ProcessMonitor",
+      "file_type": "code",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_emergency_lock",
+      "label": "Emergency Lock",
+      "file_type": "rationale",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "On USB removal the app exits, sandbox is destroyed, session terminated; prevents data exposure if drive is physically removed"
+    },
+    {
+      "id": "converted_secure_memory_wipe",
+      "label": "Secure Memory Wipe",
+      "file_type": "code",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_audit_logging",
+      "label": "Audit Logging",
+      "file_type": "concept",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_veracrypt",
+      "label": "VeraCrypt",
+      "file_type": "concept",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": "https://www.veracrypt.fr",
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_bitlocker",
+      "label": "BitLocker",
+      "file_type": "concept",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": "https://learn.microsoft.com/windows/security/bitlocker",
+      "captured_at": null,
+      "author": "Microsoft",
+      "contributor": null
+    },
+    {
+      "id": "converted_axcrypt",
+      "label": "AxCrypt",
+      "file_type": "concept",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": "https://www.axcrypt.net",
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_hardware_encrypted_usb",
+      "label": "Hardware-Encrypted USB Drives",
+      "file_type": "concept",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": "https://www.kingston.com",
+      "captured_at": null,
+      "author": "Kingston Technology",
+      "contributor": null
+    },
+    {
+      "id": "converted_python",
+      "label": "Python",
+      "file_type": "concept",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_cryptography_library",
+      "label": "cryptography (Python library)",
+      "file_type": "concept",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": "https://cryptography.io",
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_pycryptodome",
+      "label": "PyCryptodome",
+      "file_type": "concept",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": "https://pycryptodome.readthedocs.io",
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_sqlite",
+      "label": "SQLite",
+      "file_type": "concept",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_applied_science_university",
+      "label": "Applied Science Private University",
+      "file_type": "document",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_ibraheem_abusnineh",
+      "label": "Ibraheem Abusnineh",
+      "file_type": "document",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_karim_taha",
+      "label": "Karim Taha",
+      "file_type": "document",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_mazin_alsarahin",
+      "label": "Mazin Alsarahin",
+      "file_type": "document",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_ismat_aldmour",
+      "label": "Dr. Ismat Aldmour",
+      "file_type": "document",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_gcm_tag",
+      "label": "GCM Tag (Authenticated Encryption)",
+      "file_type": "concept",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_constant_time_comparison",
+      "label": "Constant-Time Comparison",
+      "file_type": "rationale",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Prevents timing attacks when verifying SHA-256 hashes"
+    },
+    {
+      "id": "converted_sandbox_directory",
+      "label": "Sandbox Directory (sffs_data/sandbox)",
+      "file_type": "code",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_wrap_store_enc",
+      "label": "wrap_store.enc (Encrypted Key Database)",
+      "file_type": "code",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_folder_lock",
+      "label": "Folder Lock",
+      "file_type": "concept",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_aes_256_gcm",
+      "label": "AES-256-GCM",
+      "file_type": "concept",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_usb_portable_environment",
+      "label": "USB Portable Environment (No Install)",
+      "file_type": "rationale",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "System operates without installation or administrator privileges; runs directly from USB for use on untrusted/public computers"
+    },
+    {
+      "id": "scripts_sffs_usb_pack",
+      "label": "SFFS USB Pack",
+      "file_type": "code",
+      "source_file": "scripts/usb-pack/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "scripts_hidden_partition",
+      "label": "Hidden USB Partition",
+      "file_type": "concept",
+      "source_file": "scripts/usb-pack/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "scripts_pyinstaller",
+      "label": "PyInstaller",
+      "file_type": "concept",
+      "source_file": "scripts/usb-pack/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "scripts_sffs_launcher",
+      "label": "SFFS_launcher.exe",
+      "file_type": "code",
+      "source_file": "scripts/usb-pack/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "scripts_sffs_worker",
+      "label": "SFFS_worker.exe",
+      "file_type": "code",
+      "source_file": "scripts/usb-pack/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "sffs_data_headless_demo",
+      "label": "Headless Demo Payload",
+      "file_type": "code",
+      "source_file": "sffs_data/headless_demo.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_presentations_gp1mk2_pdf",
+      "label": "GP1mk2 1.pdf",
+      "file_type": "document",
+      "source_file": "docs/presentations/GP1mk2 1.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "converted_nonimplemented_full_cloud_sync",
+      "label": "Full Cloud Sync (Auto-sync)",
+      "file_type": "rationale",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Not implemented as auto-sync; manual upload/download via Google Drive API only. Deferred due to complexity and potential security risks of background network calls"
+    },
+    {
+      "id": "converted_nonimplemented_cpp_java",
+      "label": "C++ or Java Backend Modules",
+      "file_type": "rationale",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Not implemented; project remained pure Python for portability and ease of integration across student modules"
+    },
+    {
+      "id": "converted_future_work_yubikey",
+      "label": "HSM/YubiKey Support",
+      "file_type": "rationale",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Future work: store master keys on hardware token for multi-factor authentication"
+    },
+    {
+      "id": "converted_future_work_sandbox_hardening",
+      "label": "Linux Sandbox Hardening (bubblewrap/Firejail)",
+      "file_type": "rationale",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Future work: integrate with bubblewrap or Firejail for stricter OS-level containment"
+    },
+    {
+      "id": "converted_performance_metrics",
+      "label": "Performance Metrics (USB 3.0, 100MB file)",
+      "file_type": "paper",
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "code1_f01_generate_key_pairs",
+      "target": "code1_f06_secure_key_storage",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code1/f01_generate_key_pairs.py",
+      "source_location": null,
+      "weight": 0.95
+    },
+    {
+      "source": "code1_f01_generate_key_pairs",
+      "target": "rsa_2048",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code1/f01_generate_key_pairs.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code1_f02_encrypt_file",
+      "target": "aes_256_gcm",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code1/f02_encrypt_file.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code1_f02_encrypt_file",
+      "target": "sffs_file_format",
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code1/f02_encrypt_file.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code1_f02_encrypt_file",
+      "target": "provenance_token",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code1/f02_encrypt_file.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code1_f03_decrypt_file",
+      "target": "sffs_file_format",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code1/f03_decrypt_file.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code1_f03_decrypt_file",
+      "target": "provenance_token",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code1/f03_decrypt_file.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code1_f03_decrypt_file",
+      "target": "code1_f05_verify_hash",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "code1/f03_decrypt_file.py",
+      "source_location": null,
+      "weight": 0.9
+    },
+    {
+      "source": "code1_f04_generate_hash",
+      "target": "sha256_hash",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code1/f04_generate_hash.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code1_f05_verify_hash",
+      "target": "code1_f04_generate_hash",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code1/f05_verify_hash.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code1_f05_verify_hash",
+      "target": "constant_time_comparison",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code1/f05_verify_hash.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code1_f06_secure_key_storage",
+      "target": "argon2id",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code1/f06_secure_key_storage.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code1_f06_secure_key_storage",
+      "target": "pbkdf2",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code1/f06_secure_key_storage.py",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "code2_f07_create_isolated_sandbox",
+      "target": "sandbox_isolation",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code2/f07_create_isolated_sandbox.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code2_f07_create_isolated_sandbox",
+      "target": "dod_5220_22_m",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code2/f07_create_isolated_sandbox.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code2_f08_secure_memory_wipe",
+      "target": "dod_5220_22_m",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code2/f08_secure_memory_wipe.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code2_f09_authenticate_user",
+      "target": "argon2id",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code2/f09_authenticate_user.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code2_f09_authenticate_user",
+      "target": "code2_f08_secure_memory_wipe",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code2/f09_authenticate_user.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code2_f09_authenticate_user",
+      "target": "exponential_backoff_lockout",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code2/f09_authenticate_user.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code2_f09_authenticate_user",
+      "target": "constant_time_comparison",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code2/f09_authenticate_user.py",
+      "source_location": null,
+      "weight": 0.7
+    },
+    {
+      "source": "code2_f10_monitor_process",
+      "target": "code2_f12_emergency_lock",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "code2/f10_monitor_process.py",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "code2_f11_write_audit_log",
+      "target": "aes_256_gcm",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code2/f11_write_audit_log.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code2_f11_write_audit_log",
+      "target": "hash_chain_integrity",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code2/f11_write_audit_log.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code2_f12_emergency_lock",
+      "target": "code2_f07_create_isolated_sandbox",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code2/f12_emergency_lock.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code2_f12_emergency_lock",
+      "target": "code2_f08_secure_memory_wipe",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code2/f12_emergency_lock.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code2_f12_emergency_lock",
+      "target": "code2_f09_authenticate_user",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code2/f12_emergency_lock.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code2_f12_emergency_lock",
+      "target": "code2_f11_write_audit_log",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code2/f12_emergency_lock.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code2_os_isolation",
+      "target": "code2_windows_job_wrapper",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code2/os_isolation.py",
+      "source_location": null,
+      "weight": 0.9
+    },
+    {
+      "source": "code2_secure_app_launcher",
+      "target": "code2_os_isolation",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code2/secure_app_launcher.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code2_secure_app_launcher",
+      "target": "code2_windows_job_wrapper",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code2/secure_app_launcher.py",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "code2_secure_app_launcher",
+      "target": "windows_job_object",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code2/secure_app_launcher.py",
+      "source_location": null,
+      "weight": 0.7
+    },
+    {
+      "source": "code2_windows_job_wrapper",
+      "target": "windows_job_object",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code2/windows_job_wrapper.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code3_f13_init_drive_detection",
+      "target": "code3_f14_ui_dashboard",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "code3/f13_init_drive_detection.py",
+      "source_location": null,
+      "weight": 0.9
+    },
+    {
+      "source": "readme",
+      "target": "defense_in_depth",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme",
+      "target": "code1_f01_generate_key_pairs",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "readme",
+      "target": "code1_f02_encrypt_file",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "readme",
+      "target": "code1_f03_decrypt_file",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "readme",
+      "target": "code2_f07_create_isolated_sandbox",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "readme",
+      "target": "code2_f09_authenticate_user",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "readme",
+      "target": "code2_f11_write_audit_log",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "readme",
+      "target": "code3_f13_init_drive_detection",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "readme",
+      "target": "code3_f14_ui_dashboard",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "code1_f02_encrypt_file",
+      "target": "code1_f03_decrypt_file",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code1/f02_encrypt_file.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code2_f07_create_isolated_sandbox",
+      "target": "code1_f03_decrypt_file",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "code2/f07_create_isolated_sandbox.py",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "code1_f06_secure_key_storage",
+      "target": "code2_f09_authenticate_user",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "code1/f06_secure_key_storage.py",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "code1_f05_verify_hash",
+      "target": "code2_f09_authenticate_user",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "code1/f05_verify_hash.py",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "main_code_core",
+      "target": "code3_mouse_entropy",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "main-code/sffs_core.py"
+    },
+    {
+      "source": "main_code_core",
+      "target": "code3_f16_cloud_sync",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "main-code/sffs_core.py"
+    },
+    {
+      "source": "main_code_core",
+      "target": "code3_f17_config_loader",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "main-code/sffs_core.py"
+    },
+    {
+      "source": "main_code_core",
+      "target": "main_code_isolated_worker",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "main-code/sffs_core.py"
+    },
+    {
+      "source": "main_code_core",
+      "target": "main_code_provenance_table",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "main-code/sffs_core.py"
+    },
+    {
+      "source": "main_code_core",
+      "target": "main_code_wrap_store",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "main-code/sffs_core.py"
+    },
+    {
+      "source": "main_code_entry_point",
+      "target": "main_code_core",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "main-code/main.py"
+    },
+    {
+      "source": "code3_sffs_ui",
+      "target": "code3_mouse_entropy",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code3/sffs_ui.py"
+    },
+    {
+      "source": "code3_sffs_ui",
+      "target": "code3_sandbox_viewer",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code3/sffs_ui.py"
+    },
+    {
+      "source": "code3_sffs_ui",
+      "target": "code3_f16_cloud_sync",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code3/sffs_ui.py"
+    },
+    {
+      "source": "code3_sffs_ui",
+      "target": "code3_f18_thread_controller",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code3/sffs_ui.py"
+    },
+    {
+      "source": "code3_run_student3",
+      "target": "code3_f17_config_loader",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code3/run_student3.py"
+    },
+    {
+      "source": "code3_run_student3",
+      "target": "code3_f15_file_explorer",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code3/run_student3.py"
+    },
+    {
+      "source": "code3_run_student3",
+      "target": "code3_f18_thread_controller",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code3/run_student3.py"
+    },
+    {
+      "source": "code3_run_student3",
+      "target": "code3_f16_cloud_sync",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code3/run_student3.py"
+    },
+    {
+      "source": "code3_sandbox_viewer",
+      "target": "main_code_core",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code3/sandbox_viewer.py"
+    },
+    {
+      "source": "main_code_isolated_worker",
+      "target": "main_code_core",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "main-code/isolated_worker.py"
+    },
+    {
+      "source": "code3_f17_config_loader",
+      "target": "main_code_core",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "code3/f17_config_loader.py"
+    },
+    {
+      "source": "scripts_usb_installer",
+      "target": "scripts_fetch_viewers",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "scripts/sffs_usb_installer.py"
+    },
+    {
+      "source": "scripts_usb_setup",
+      "target": "scripts_usb_installer",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "scripts/sffs_usb_setup.py"
+    },
+    {
+      "source": "scripts_reset_data",
+      "target": "main_code_core",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "scripts/reset_sffs_data.py"
+    },
+    {
+      "source": "hidden_volume_partition_discovery",
+      "target": "hidden_volume_volume_mount_api",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "scripts/usb-pack/hidden_volume.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "launcher_main_usb_launcher_entry",
+      "target": "hidden_volume_partition_discovery",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/usb-pack/launcher_main.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "launcher_main_usb_launcher_entry",
+      "target": "hidden_volume_volume_mount_api",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/usb-pack/launcher_main.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "launcher_main_usb_launcher_entry",
+      "target": "launcher_main_four_partition_strategies",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/usb-pack/launcher_main.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "sffs_usb_pack_full_usb_deployment",
+      "target": "hidden_volume_partition_discovery",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/usb-pack/sffs_usb_pack.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "sffs_usb_pack_full_usb_deployment",
+      "target": "hidden_volume_volume_mount_api",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/usb-pack/sffs_usb_pack.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "sffs_usb_pack_full_usb_deployment",
+      "target": "generate_icon_shield_lock_icon",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/usb-pack/sffs_usb_pack.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "setup_usb_standalone_one_click_installer",
+      "target": "hidden_volume_volume_mount_api",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/usb-pack/setup_usb_standalone.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "test_cloud_backup_cloud_backup_e2e_test",
+      "target": "test_cloud_backup_mock_mock_test_suite",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "scripts/test_cloud_backup.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "test_cloud_backup_mock_unencrypted_keystore_check",
+      "target": "test_cloud_backup_mock_path_traversal_rejection",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "scripts/test_cloud_backup_mock.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "verify_usb_launchers_manifest_resolve_probe",
+      "target": "test_manifest_resolve_all_apps_manifest_route_validation",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "scripts/verify_usb_launchers.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "test_integration_encrypt_decrypt_roundtrip",
+      "target": "test_student1_crypto_module_tests",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_integration.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "test_integration_ipc_replay_protection",
+      "target": "test_worker_hardening_ipc_hardening_tests",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "tests/test_integration.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "test_integration_security_fix_regression",
+      "target": "test_sandbox_security_fix_verification_tests",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "tests/test_integration.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "test_integration_hmac_file_binding",
+      "target": "test_student1_crypto_module_tests",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_integration.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "test_integration_audit_log_retry",
+      "target": "test_student2_security_module_tests",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_integration.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "test_sandbox_security_sandbox_structure_tests",
+      "target": "test_student2_security_module_tests",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_sandbox_security.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "test_sandbox_security_isolation_detection_tests",
+      "target": "test_windows_job_lazy_activation_job_activation_tests",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_sandbox_security.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "test_sandbox_security_launcher_policy_tests",
+      "target": "test_secure_launcher_policy_external_viewer_termination",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_sandbox_security.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "test_sandbox_security_worker_path_policy_tests",
+      "target": "test_worker_hardening_ipc_hardening_tests",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_sandbox_security.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "test_sandbox_security_fix_verification_tests",
+      "target": "test_sandbox_security_sandbox_structure_tests",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "tests/test_sandbox_security.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "test_student2_auth_timing_constant",
+      "target": "test_student2_security_module_tests",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "tests/test_student2.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "test_student3_system_architect_tests",
+      "target": "test_cloud_backup_mock_mock_test_suite",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_student3.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "tests___init___test_suite_init",
+      "target": "conftest_pytest_syspath_setup",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "tests/__init__.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "requirements_txt_unified_deps",
+      "target": "code1_readme_sffs_binary_format",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "requirements.txt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code1_readme_sffs_binary_format",
+      "target": "code1_readme_aes256gcm_rationale",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code1/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code1_readme_aes256gcm_rationale",
+      "target": "code1_readme_iv_security_principle",
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "code1/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code1_readme_hash_pre_integrity",
+      "target": "code1_readme_sffs_binary_format",
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "code1/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "test_student1_crypto_module_tests",
+      "target": "test_integration_encrypt_decrypt_roundtrip",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "tests/test_student1.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "test_student2_security_module_tests",
+      "target": "test_sandbox_security_sandbox_structure_tests",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "tests/test_student2.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claudemd_sffs",
+      "target": "code2_readme_student2_module",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "claudemd_sffs",
+      "target": "code3_readme_student3_module",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_system_overview",
+      "target": "docs_architecture_module_map",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_system_overview",
+      "target": "docs_architecture_init_sequence",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_system_overview",
+      "target": "docs_architecture_encrypt_flow",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_system_overview",
+      "target": "docs_architecture_worker_policy",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_init_sequence",
+      "target": "code2_readme_f09_auth",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_init_sequence",
+      "target": "code3_readme_f13_drive_detection",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_encrypt_flow",
+      "target": "docs_apireference_f01_keygen",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_encrypt_flow",
+      "target": "docs_apireference_f02_encrypt",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_encrypt_flow",
+      "target": "docs_apireference_f06_keystore",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_worker_policy",
+      "target": "docs_apireference_f03_decrypt",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_securitymodel_threat_model",
+      "target": "docs_securitymodel_aes256_gcm",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/SECURITY_MODEL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_securitymodel_threat_model",
+      "target": "docs_securitymodel_argon2id",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/SECURITY_MODEL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_securitymodel_threat_model",
+      "target": "docs_securitymodel_attack_table",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/SECURITY_MODEL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_securitymodel_threat_model",
+      "target": "docs_securitymodel_os_isolation",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/SECURITY_MODEL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_securitymodel_threat_model",
+      "target": "docs_securitymodel_regression_tests",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/SECURITY_MODEL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_worker_policy",
+      "target": "docs_securitymodel_regression_tests",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_demoday_plan",
+      "target": "docs_demoday_p1_bugs",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/DEMO_DAY_PLAN.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_demoday_plan",
+      "target": "docs_demoday_p4_security",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/DEMO_DAY_PLAN.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_demoday_p4_security",
+      "target": "docs_demoday_p1_bugs",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "docs/DEMO_DAY_PLAN.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "plan_phases",
+      "target": "docs_planning_p00_scaffold",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/planning/plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "plan_phases",
+      "target": "docs_planning_p01_student1",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/planning/plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "plan_phases",
+      "target": "docs_planning_p02_student2",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/planning/plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "plan_phases",
+      "target": "docs_planning_p03_student3",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/planning/plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "plan_phases",
+      "target": "docs_planning_p04_integration",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/planning/plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "plan_phases",
+      "target": "docs_planning_p05_runners",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/planning/plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "plan_phases",
+      "target": "docs_planning_p06_docs",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/planning/plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "plan_phases",
+      "target": "docs_planning_p07_usb_install",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/planning/plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_planning_p01_student1",
+      "target": "docs_apireference_f01_keygen",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/planning/p01_student1.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_planning_p01_student1",
+      "target": "docs_apireference_f04_hash",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/planning/p01_student1.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_planning_p02_student2",
+      "target": "docs_apireference_f07_sandbox",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/planning/p02_student2.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_planning_p02_student2",
+      "target": "docs_apireference_f08_memory_wipe",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/planning/p02_student2.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_planning_p02_student2",
+      "target": "docs_apireference_f09_auth",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/planning/p02_student2.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_planning_p02_student2",
+      "target": "docs_apireference_f10_monitor",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/planning/p02_student2.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_planning_p02_student2",
+      "target": "docs_apireference_f11_audit",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/planning/p02_student2.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_planning_p02_student2",
+      "target": "docs_apireference_f12_emergency_lock",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/planning/p02_student2.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_planning_p03_student3",
+      "target": "docs_apireference_f14_ui",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/planning/p03_student3.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_planning_p03_student3",
+      "target": "docs_apireference_f15_fm",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/planning/p03_student3.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_planning_p03_student3",
+      "target": "docs_apireference_f16_cloud",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/planning/p03_student3.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_planning_p03_student3",
+      "target": "docs_apireference_f17_config",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/planning/p03_student3.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_planning_p03_student3",
+      "target": "docs_apireference_f18_threads",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/planning/p03_student3.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_planning_p04_integration",
+      "target": "maincode_readme_sffscore",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/planning/p04_main_integration.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "maincode_readme_sffscore",
+      "target": "docs_apireference_sffscore_integration",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "main-code/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "maincode_readme_security_layers",
+      "target": "docs_securitymodel_aes256_gcm",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "main-code/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "maincode_readme_security_layers",
+      "target": "docs_securitymodel_argon2id",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "main-code/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "maincode_readme_security_layers",
+      "target": "maincode_readme_sffscore",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "main-code/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_developer_guide",
+      "target": "docs_planning_p04_integration",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "docs/DEVELOPER_GUIDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_usb_installation",
+      "target": "code3_readme_google_drive",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/USB_INSTALLATION.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_usb_installation",
+      "target": "code3_readme_f13_drive_detection",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/USB_INSTALLATION.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code3_readme_google_drive",
+      "target": "docs_apireference_f16_cloud",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code3/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "plan_hardening",
+      "target": "docs_securitymodel_os_isolation",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/planning/plan.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_apireference_all_functions",
+      "target": "docs_apireference_f01_keygen",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_apireference_all_functions",
+      "target": "docs_apireference_f02_encrypt",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_apireference_all_functions",
+      "target": "docs_apireference_f03_decrypt",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_apireference_all_functions",
+      "target": "docs_apireference_f04_hash",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_apireference_all_functions",
+      "target": "docs_apireference_f06_keystore",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_apireference_all_functions",
+      "target": "docs_apireference_f07_sandbox",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_apireference_all_functions",
+      "target": "docs_apireference_f08_memory_wipe",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_apireference_all_functions",
+      "target": "docs_apireference_f09_auth",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_apireference_all_functions",
+      "target": "docs_apireference_f10_monitor",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_apireference_all_functions",
+      "target": "docs_apireference_f11_audit",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_apireference_all_functions",
+      "target": "docs_apireference_f12_emergency_lock",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_apireference_all_functions",
+      "target": "docs_apireference_f14_ui",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_apireference_all_functions",
+      "target": "docs_apireference_f15_fm",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_apireference_all_functions",
+      "target": "docs_apireference_f16_cloud",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_apireference_all_functions",
+      "target": "docs_apireference_f17_config",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_apireference_all_functions",
+      "target": "docs_apireference_f18_threads",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/API_REFERENCE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_securitymodel_aes256_gcm",
+      "target": "docs_securitymodel_attack_table",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/SECURITY_MODEL.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_sffs_format",
+      "target": "docs_apireference_f02_encrypt",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code2_readme_student2_module",
+      "target": "docs_apireference_f12_emergency_lock",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code2/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "code3_readme_student3_module",
+      "target": "code3_readme_f13_drive_detection",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code3/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_aes_256",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_rsa",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_sha_256",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_argon2id",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_pbkdf2",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_isolated_execution",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_google_drive_api",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_pyqt6",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_sffscore",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_isolated_worker",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_process_monitor",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_emergency_lock",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_secure_memory_wipe",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_audit_logging",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_usb_portable_environment",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_sandbox_directory",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_wrap_store_enc",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_aes_256_gcm",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_cryptography_library",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_pycryptodome",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_sqlite",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_python",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_applied_science_university",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_veracrypt",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_bitlocker",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_axcrypt",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_hardware_encrypted_usb",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_folder_lock",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_sffs",
+      "target": "converted_incremental_development",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_ibraheem_abusnineh",
+      "target": "converted_sffs",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_karim_taha",
+      "target": "converted_sffs",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_mazin_alsarahin",
+      "target": "converted_sffs",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_ismat_aldmour",
+      "target": "converted_sffs",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_gcm_tag",
+      "target": "converted_aes_256_gcm",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_constant_time_comparison",
+      "target": "converted_sha_256",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_sffs_usb_pack",
+      "target": "converted_sffs",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/usb-pack/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_sffs_usb_pack",
+      "target": "scripts_hidden_partition",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/usb-pack/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_sffs_usb_pack",
+      "target": "scripts_pyinstaller",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/usb-pack/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_sffs_usb_pack",
+      "target": "scripts_sffs_launcher",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/usb-pack/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_sffs_usb_pack",
+      "target": "scripts_sffs_worker",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/usb-pack/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "sffs_data_headless_demo",
+      "target": "converted_sffs",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "sffs_data/headless_demo.txt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "converted_performance_metrics",
+      "target": "converted_sffs",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_presentations_gp1mk2_pdf",
+      "target": "converted_sffs",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/presentations/GP1mk2 1.pdf",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "sffs_encrypt_decrypt_pipeline",
+      "label": "SFFS Encrypt-Decrypt Pipeline",
+      "nodes": [
+        "code1_f01_generate_key_pairs",
+        "code1_f06_secure_key_storage",
+        "code1_f02_encrypt_file",
+        "code1_f03_decrypt_file",
+        "code1_f04_generate_hash",
+        "code1_f05_verify_hash",
+        "sffs_file_format",
+        "aes_256_gcm",
+        "rsa_2048"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "README.md"
+    },
+    {
+      "id": "emergency_lockdown_flow",
+      "label": "Emergency Lockdown Flow",
+      "nodes": [
+        "code2_f12_emergency_lock",
+        "code2_f07_create_isolated_sandbox",
+        "code2_f08_secure_memory_wipe",
+        "code2_f09_authenticate_user",
+        "code2_f11_write_audit_log",
+        "dod_5220_22_m"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "code2/f12_emergency_lock.py"
+    },
+    {
+      "id": "authentication_and_access_control",
+      "label": "Authentication and Access Control",
+      "nodes": [
+        "code2_f09_authenticate_user",
+        "code2_f08_secure_memory_wipe",
+        "argon2id",
+        "exponential_backoff_lockout",
+        "constant_time_comparison",
+        "code1_f06_secure_key_storage"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.85,
+      "source_file": "code2/f09_authenticate_user.py"
+    },
+    {
+      "id": "modern_ui_subsystem",
+      "label": "SFFS Modern UI Subsystem",
+      "nodes": [
+        "code3_sffs_ui",
+        "code3_mouse_entropy",
+        "code3_sandbox_viewer",
+        "code3_f16_cloud_sync",
+        "code3_f18_thread_controller",
+        "code3_f15_file_explorer",
+        "code3_f17_config_loader"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "code3/sffs_ui.py"
+    },
+    {
+      "id": "integration_orchestration_layer",
+      "label": "main-code Integration Layer",
+      "nodes": [
+        "main_code_core",
+        "main_code_isolated_worker",
+        "main_code_provenance_table",
+        "main_code_wrap_store",
+        "main_code_entry_point"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "main-code/sffs_core.py"
+    },
+    {
+      "id": "usb_deployment_stack",
+      "label": "USB Deployment Toolchain",
+      "nodes": [
+        "scripts_usb_installer",
+        "scripts_usb_setup",
+        "scripts_reset_data",
+        "scripts_install_deps",
+        "scripts_fetch_viewers"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/sffs_usb_installer.py"
+    },
+    {
+      "id": "chunk3_usb_deployment_pipeline",
+      "label": "USB Deployment Pipeline",
+      "nodes": [
+        "setup_usb_standalone_one_click_installer",
+        "sffs_usb_pack_full_usb_deployment",
+        "launcher_main_usb_launcher_entry",
+        "hidden_volume_partition_discovery",
+        "hidden_volume_volume_mount_api",
+        "generate_icon_shield_lock_icon"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/usb-pack"
+    },
+    {
+      "id": "chunk3_test_hierarchy",
+      "label": "SFFS Multi-Layer Test Hierarchy",
+      "nodes": [
+        "test_student1_crypto_module_tests",
+        "test_student2_security_module_tests",
+        "test_student3_system_architect_tests",
+        "test_integration_encrypt_decrypt_roundtrip",
+        "test_integration_ipc_replay_protection",
+        "test_integration_security_fix_regression",
+        "test_sandbox_security_sandbox_structure_tests",
+        "test_sandbox_security_launcher_policy_tests",
+        "test_sandbox_security_worker_path_policy_tests",
+        "test_worker_hardening_ipc_hardening_tests",
+        "test_mouse_entropy_entropy_pool_tests",
+        "test_cloud_backup_mock_mock_test_suite"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/"
+    },
+    {
+      "id": "chunk3_cryptographic_trust_chain",
+      "label": "Cryptographic Trust Chain Rationale",
+      "nodes": [
+        "code1_readme_sffs_binary_format",
+        "code1_readme_aes256gcm_rationale",
+        "code1_readme_iv_security_principle",
+        "code1_readme_hash_pre_integrity"
+      ],
+      "relation": "form",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "code1/README.md"
+    },
+    {
+      "id": "sffs_three_student_architecture",
+      "label": "Three-Student Modular Architecture",
+      "nodes": [
+        "code2_readme_student2_module",
+        "code3_readme_student3_module",
+        "maincode_readme_sffscore",
+        "docs_architecture_module_map"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/ARCHITECTURE.md"
+    },
+    {
+      "id": "sffs_crypto_function_set",
+      "label": "Student 1 Crypto Functions (F01-F06)",
+      "nodes": [
+        "docs_apireference_f01_keygen",
+        "docs_apireference_f02_encrypt",
+        "docs_apireference_f03_decrypt",
+        "docs_apireference_f04_hash",
+        "docs_apireference_f05_verify",
+        "docs_apireference_f06_keystore"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/API_REFERENCE.md"
+    },
+    {
+      "id": "sffs_security_function_set",
+      "label": "Student 2 Security Functions (F07-F12)",
+      "nodes": [
+        "docs_apireference_f07_sandbox",
+        "docs_apireference_f08_memory_wipe",
+        "docs_apireference_f09_auth",
+        "docs_apireference_f10_monitor",
+        "docs_apireference_f11_audit",
+        "docs_apireference_f12_emergency_lock"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/API_REFERENCE.md"
+    },
+    {
+      "id": "converted_sffs_crypto_stack",
+      "label": "SFFS Cryptographic Foundation",
+      "nodes": [
+        "converted_aes_256",
+        "converted_aes_256_gcm",
+        "converted_rsa",
+        "converted_sha_256",
+        "converted_argon2id",
+        "converted_pbkdf2",
+        "converted_gcm_tag",
+        "converted_constant_time_comparison"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md"
+    },
+    {
+      "id": "converted_sffs_security_layer",
+      "label": "SFFS Security Layer",
+      "nodes": [
+        "converted_isolated_execution",
+        "converted_isolated_worker",
+        "converted_emergency_lock",
+        "converted_secure_memory_wipe",
+        "converted_process_monitor",
+        "converted_audit_logging",
+        "converted_sandbox_directory",
+        "converted_wrap_store_enc"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md"
+    },
+    {
+      "id": "converted_sffs_team",
+      "label": "SFFS Project Team",
+      "nodes": [
+        "converted_ibraheem_abusnineh",
+        "converted_karim_taha",
+        "converted_mazin_alsarahin",
+        "converted_ismat_aldmour",
+        "converted_applied_science_university"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/converted/GP2-Finalizer-FINAL_b106cfef.md"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

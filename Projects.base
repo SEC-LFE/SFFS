@@ -1,0 +1,20 @@
+filters:
+  and:
+    - file.inFolder("01-Projects")
+    - 'file.ext == "md"'
+
+formulas:
+  has_goals: 'if(contains(file.name, "Overview") || contains(file.name, "Module"), "✅", "—")'
+
+properties:
+  file.name:
+    displayName: "Project Note"
+  formula.has_goals:
+    displayName: "Has Goals"
+
+views:
+  - type: table
+    name: "All Projects"
+    order:
+      - file.name
+      - file.mtime

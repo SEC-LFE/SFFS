@@ -1,0 +1,15 @@
+filters:
+  and:
+    - file.inFolder("Permanent Notes")
+    - 'file.ext == "md"'
+
+views:
+  - type: table
+    name: "Permanent Notes Index"
+    order:
+      - file.name
+      - file.mtime
+  - type: cards
+    name: "Card View"
+    order:
+      - file.name

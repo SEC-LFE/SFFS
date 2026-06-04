@@ -1,0 +1,85 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "SFFS Encrypt → Decrypt Pipeline — End-to-End Data Flow",
+  "description": "For developers who want to trace a file's full lifecycle: plaintext → AES-256-GCM encryption → RSA key wrapping → WrapStore → signed IPC → worker subprocess → GCM auth verification → integrity check → viewer launch. After this tour you can point to exactly which module handles each step and where to add new pipeline stages.",
+  "ref": "claude/military-cyber-evaluation-AAU5e",
+  "steps": [
+    {
+      "directory": "main-code",
+      "title": "1. Integration layer — where pipelines begin",
+      "description": "**Situation:** `main-code/` is the orchestration hub. It imports from all three student modules (`code1/`, `code2/`, `code3/`) but never implements crypto primitives itself. Every encrypt/decrypt call starts and ends here.\n\n**Mechanism:** Three files matter for the data pipeline: `main.py` (arg parsing → mode dispatch), `sffs_core.py` (SFFSCore — session state + operation sequencing), and `isolated_worker.py` (out-of-process decrypt subprocess).\n\n**Implication:** If you want to add a pre-encrypt hook (e.g., compress before encrypting) or a post-decrypt hook, `encryptFileOperation()` and `decryptFileOperation()` in `sffs_core.py` are where you insert it.\n\n**Gotcha:** `.venv/` and `sffs_data/` are also in the repo root — don't confuse `main-code/` with site-packages or runtime data."
+    },
+    {
+      "file": "main-code/main.py",
+      "line": 178,
+      "title": "2. Entry point — main() dispatches to modes",
+      "description": "**Situation:** `main()` is the single entry point. It parses CLI args and dispatches to one of four paths: `--test` (pytest), `--student N` (standalone demo), `--headless` (CLI pipeline), or `run_full_app()` (PyQt6 GUI).\n\n**Mechanism:** Before dispatch, `--secure-required` calls `ensure_secure_mode()` — a fail-closed gate that raises if no OS-level isolation (AppArmor on Linux, Windows Job Objects on Windows) is detected.\n\n**Implication:** The `run_full_app()` path (line 112) constructs `SFFSCore`, calls `core.initialize()`, shows a login dialog, then hands off to `SFFSWindow`. Every encrypt/decrypt operation flows through `core` from that point.\n\n**Gotcha:** `_usb_root` is a module-level global set from `SFFS_ROOT` env var (lines 19–25). Override via `--usb-root`. Every path operation depends on this value being correct — when it's wrong, `initDriveDetection()` returns wrong paths and the pipeline silently fails."
+    },
+    {
+      "file": "main-code/sffs_core.py",
+      "line": 78,
+      "title": "3. SFFSCore — session state machine",
+      "description": "**Situation:** `SFFSCore` holds all session state: `paths`, `session_token`, `sandbox`, `_session_password` (bytearray), `_wrap_store`, `_decrypted_registry`, and `_active_workers`.\n\n**Mechanism:** Initialization order is strict (module docstring lines 8–17): drive detection → config → auth DB → audit logger → process monitor. After `login()` (line 213), the sandbox is created and the `WrapStore` + `ProvenanceTable` are initialized with the session password.\n\n**Implication:** Every public operation method (`encryptFileOperation`, `decryptFileOperation`, `backupKeys`) calls `_require_session()` (line 284) as its first action. No pipeline step executes outside a session — this is the security invariant.\n\n**Gotcha:** `_session_password` is a `bytearray` rather than `str` specifically so `secureMemoryWipe()` can zero it. Never convert to `str` and hold a reference — only decode transiently in `_master_password_str()` (line 288)."
+    },
+    {
+      "file": "main-code/sffs_core.py",
+      "line": 326,
+      "title": "4. Encrypt request — encryptFileOperation()",
+      "description": "**Situation:** When the user clicks \"Encrypt\" in the UI (or `run_headless_demo` calls it), this method is the sole entry point for file encryption.\n\n**Mechanism:** It calls `_ensure_rsa_keys()` (line 332) which either creates a new RSA-2048 key pair or verifies the existing keystore password. Then it generates a random 32-byte AES key via `session_random_bytes()` (line 337), calls `encryptFile()` from code1 (line 341), wraps the AES key with the RSA public key via `wrapAESKey()` (line 347), stores the warp in `WrapStore.store()` (line 349), and finally hashes the original file for integrity (line 350).\n\n**Implication:** The AES key exists only in memory on this call stack. After `wrapAESKey()` returns, only the RSA-wrapped copy persists in `WrapStore`. The raw AES key is never written to disk.\n\n**Gotcha:** If `_entropy_mode == \"interactive\"` (line 333), the method raises `INSUFFICIENT_ENTROPY` if the mouse entropy pool hasn't collected 256 moves yet. This blocks encryption until the user moves the mouse — a UX surprise if you expect immediate encrypt."
+    },
+    {
+      "file": "code1/f01_generate_key_pairs.py",
+      "line": 47,
+      "title": "5. RSA key generation — foundation of the key hierarchy",
+      "description": "**Situation:** `generateKeyPairs()` creates an RSA-2048 key pair. The public key encrypts AES keys (key wrapping); the private key decrypts them. This is the root of the SFFS key hierarchy.\n\n**Mechanism:** Line 82: `rsa.generate_private_key(public_exponent=65537, key_size=2048)`. The public key is written to `public_key_<key_id>.pem` (line 106). The private key is returned as bytes and **never** written to disk here — the caller (`_ensure_rsa_keys`) immediately passes it to `secureKeyStorage()`.\n\n**Implication:** The `key_id` (line 101) is the first 16 hex chars of SHA-256 of the public PEM. It's used in filenames to prevent silent overwrites — each key pair gets a unique filename.\n\n**Gotcha:** `key_size < 2048` raises `ValueError` (line 75). Don't try 1024 for \"speed\" — NIST requires ≥ 2048-bit RSA for new deployments."
+    },
+    {
+      "file": "code1/f02_encrypt_file.py",
+      "line": 70,
+      "title": "6. AES-256-GCM encrypt — the .sffs wire format",
+      "description": "**Situation:** `encryptFile()` is the core crypto operation. It reads plaintext, encrypts with AES-256-GCM, and writes the `.sffs` binary file.\n\n**Mechanism:** The `.sffs` V3 header format (docstring lines 24–44) is: Magic(4) + Version(1) + IV(12) + HashPre(32) + FileSize(8) + ExtLen(1) + Ext(N) + Token(32) + Ciphertext. The IV is fresh `secrets.token_bytes(12)` (line 127). GCM provides both confidentiality and authentication in one pass — the 16-byte auth tag is appended by the cipher automatically.\n\n**Implication:** The provenance token (32 random bytes, line 121) sits in the **header** in plaintext — security comes from the table lookup, not from hiding the token. The `hash_pre` (SHA-256 of original plaintext, line 114) enables post-decrypt integrity checking.\n\n**Gotcha:** The extension is stored inside the header (line 141), not in the `.sffs` filename. The output file is always `<stem>.sffs` — file types are hidden from directory listings. And `ext_len > 32` raises (line 146) — a real file extension is never that long."
+    },
+    {
+      "file": "code1/f06_secure_key_storage.py",
+      "line": 12,
+      "title": "7. Secure keystore — PBKDF2 + AES-256-GCM for the RSA private key",
+      "description": "**Situation:** The RSA private key is the master secret. If it leaks, all `.sffs` files encrypted with its paired public key are compromised. `secureKeyStorage()` wraps the private key with AES-256-GCM using a key derived from the user's master password.\n\n**Mechanism:** PBKDF2-SHA256 at 310,000 iterations (line 75) derives a 32-byte wrapping key from the password + a per-keystore random salt. The private key is encrypted with AES-256-GCM and stored as `keystore_<key_id>.json` under `sffs_data/keys/`. The keystore JSON format (docstring lines 34–43) includes `kdf_iterations`, `salt`, `iv`, `auth_tag`, and `encrypted_private_key` (all base64).\n\n**Implication:** The decrypt chain is: master password → PBKDF2 → unwrap RSA private key → RSA-OAEP unwrap per-file AES key → AES-GCM decrypt file. Each step depends on the previous — breaking one layer doesn't expose the file.\n\n**Gotcha:** `verifyKeystorePassword()` is called by `_ensure_rsa_keys()` before every encrypt. If the keystore was created with a different password, encryption is blocked with a clear error. Don't bypass this check — it prevents silent data loss."
+    },
+    {
+      "file": "main-code/wrap_store.py",
+      "line": 57,
+      "title": "8. WrapStore — encrypted SQLite for RSA-wrapped AES keys",
+      "description": "**Situation:** After the AES key is RSA-wrapped, it needs durable storage. `WrapStore` keeps these wrapped keys in an AES-256-GCM encrypted SQLite database, replacing the old per-file sidecar approach.\n\n**Mechanism:** `_DbContext` (line 57) is a context manager: on `__enter__` it decrypts `wrap_store.enc` to a temp `.db` file in `sandbox/temp/` (line 69), on `__exit__` it re-encrypts and deletes the temp file in a `finally` block (lines 84–96). The SQLite schema (line 114) keys entries by SHA-256 of the `.sffs` file content.\n\n**Implication:** The decrypted SQLite database exists only in the sandbox temp directory, which `destroySandbox()` wipes on logout. No plaintext wrap data survives the session.\n\n**Gotcha:** The temp file path uses `sandbox[\"temp_dir\"]` (passed from `sffs_core.py:236`). If `tmp_dir` is `None` it falls back to the system temp dir — a regression if `WrapStore` is ever constructed outside a login session."
+    },
+    {
+      "file": "main-code/sffs_core.py",
+      "line": 365,
+      "title": "9. Decrypt request — decryptFileOperation()",
+      "description": "**Situation:** When the user clicks \"Decrypt\" (or the viewer needs to open a file), this method is the single entry point for decryption.\n\n**Mechanism:** It calls `_require_session()` (line 371), looks up the wrapped AES key from `WrapStore.lookup()` (line 387), finds the keystore (line 388), then delegates to `_decrypt_via_worker()` (line 391). The worker path is always used — there is no in-process decrypt fallback.\n\n**Implication:** The result is cached in `_decrypt_cache` (line 411) and registered in `_decrypted_registry` (line 415) with the `hash_pre`. Future calls to `ensure_decrypted_for_view()` (line 677) reuse the cached file if it still exists in the sandbox.\n\n**Gotcha:** If `output_path` is specified (line 376), decryption goes to a user-chosen location outside the sandbox. The `is_external` flag (line 536) changes the policy check in the worker — external outputs are validated against system paths instead of sandbox boundaries."
+    },
+    {
+      "file": "main-code/isolated_worker.py",
+      "line": 154,
+      "title": "10. Worker subprocess — privilege-separated decrypt",
+      "description": "**Situation:** `_action_decrypt()` runs in a separate Python process spawned by `SFFSCore._decrypt_via_worker()`. The master password is delivered via stdin (line 235), never in CLI args.\n\n**Mechanism:** The worker verifies the HMAC-signed envelope (line 242, `_verify_envelope()`), enforces output path policy via `_policy_guard()` (line 247), unwraps the AES key using `unwrapAESKey()` (line 171), decrypts the file with `decryptFile()` (line 188), and verifies integrity with `verifyHash()` (line 189). The result is printed as JSON on stdout (line 257).\n\n**Implication:** The key material (master password, unwrapped AES key) exists only in the short-lived worker process's memory. An attacker reading the GUI process memory cannot harvest per-file keys. This is the process isolation boundary.\n\n**Gotcha:** Nonce replay is prevented by `_SEEN_NONCES` (line 35) + 30-second TTL (line 36). A background purge loop (line 208) runs every 10 seconds to prevent the nonce dictionary from growing unbounded. If the TTL is too long, replay risk increases; if too short, legitimate retries fail."
+    },
+    {
+      "file": "code1/f03_decrypt_file.py",
+      "line": 67,
+      "title": "11. File decryption — GCM auth tag verification",
+      "description": "**Situation:** `decryptFile()` is the lowest-level decrypt function. It reads the `.sffs` header, extracts IV and metadata, and calls AES-GCM decrypt which atomically verifies the authentication tag.\n\n**Mechanism:** The header is parsed positionally (lines 129–186): magic bytes → version → IV → hash_pre → file size → ext length → extension → provenance token (V3 only). If `expected_token` is supplied (line 179), it's checked with `hmac.compare_digest()` **before** any decryption attempt. The GCM `decrypt()` call (line 202) verifies the auth tag — if tampered, `InvalidTag` is raised and converted to `SecurityError` (line 212).\n\n**Implication:** The provenance check (line 181) ensures the file was encrypted by this SFFS instance. The GCM auth check ensures the ciphertext wasn't modified. Both checks happen before any plaintext is produced — fail-closed design.\n\n**Gotcha:** The output path restores the original file extension from the header (line 226): `document.sffs` → `document.docx`. The original extension is never visible in the `.sffs` filename — file types are concealed from directory listings."
+    },
+    {
+      "file": "code1/f05_verify_hash.py",
+      "line": 50,
+      "title": "12. Integrity verification — hash_pre vs hash_post",
+      "description": "**Situation:** After decryption, the worker calls `verifyHash()` to compare `hash_pre` (stored in the `.sffs` header before encryption) with `hash_post` (computed from the decrypted output). This is the final integrity gate before the plaintext is considered safe.\n\n**Mechanism:** `hmac.compare_digest()` (line 69) provides constant-time comparison — preventing timing attacks where an attacker measures response latency to brute-force the expected hash character by character. If the hashes match, integrity is verified; if not, the output is deleted and `SecurityError` is raised (isolated_worker.py lines 190–194).\n\n**Implication:** This catches post-decrypt tampering (someone modifies the decrypted file on disk) and pre-decrypt corruption (the ciphertext was bit-flipped). Without this check, tampered plaintext could reach the viewer unsafely.\n\n**Gotcha:** `hash_pre` is stored in the `.sffs` header before the AES key is generated. This means pre-encrypt tampering (if someone swapped the input file before encrypt) is detected — the hash is of whatever was actually encrypted."
+    },
+    {
+      "file": "main-code/sffs_core.py",
+      "line": 476,
+      "title": "13. Final gate — validate_before_open()",
+      "description": "**Situation:** Before a decrypted file is passed to an external viewer (image viewer, PDF reader, etc.), `validate_before_open()` performs two final checks. This is the last code gate before the file leaves the SFFS sandbox.\n\n**Mechanism:** Check 1: the file must be in `_decrypted_registry` — placed there by this session's `decryptFileOperation()` (line 514). Check 2: SHA-256 of the file on disk must match `hash_pre` from encrypt time (line 520). On failure, the file is secure-wiped before raising `SecurityError`.\n\n**Implication:** Post-decrypt tampering (an attacker modifies the decrypted file in the sandbox) and foreign file injection (placing a malicious file in the sandbox directory) are both caught here. The sandbox watcher thread (line 426) also continuously evicts foreign files every 2 seconds as a parallel defense.\n\n**Gotcha:** The registry key is the resolved absolute path (`Path.resolve()`, line 512). A symlink pointing into the sandbox from outside won't match — it's blocked. The wipe in `_wipe_and_raise()` (line 492) runs before the exception propagates, ensuring a tampered file never survives inspection.\n\n---\n\n**You're ready.** You can now:\n- Trace every step of the encrypt pipeline: `encryptFileOperation()` → `generateKeyPairs()` → `encryptFile()` → `wrapAESKey()` → `WrapStore.store()`\n- Trace the decrypt pipeline: `decryptFileOperation()` → `_decrypt_via_worker()` → `_action_decrypt()` → `decryptFile()` → `verifyHash()` → `validate_before_open()`\n- Identify which file to modify for each stage (e.g., add compression in `sffs_core.py`, change cipher params in `f02_encrypt_file.py`, add integrity checks in `f05_verify_hash.py`)\n- Run `pytest tests/test_integration.py -v` to verify the round-trip pipeline still works after changes"
+    }
+  ]
+}
