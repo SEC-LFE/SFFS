@@ -29,7 +29,7 @@ DEFAULT_CONFIG: dict[str, Any] = {
     "theme": "dark",
     "auto_lock_timeout_seconds": 300,
     "max_login_attempts": 5,
-    "cloud_sync_enabled": False,
+    "cloud_sync_enabled": True,
     "cloud_sync_provider": "google_drive",
     "google_oauth_token_path": None,
     "default_encrypt_dir": None,
