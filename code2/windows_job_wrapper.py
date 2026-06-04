@@ -157,7 +157,13 @@ def main() -> int:
 
     repo_root = Path(__file__).resolve().parent.parent
     main_py = repo_root / "main-code" / "main.py"
-    args = [sys.executable, str(main_py), "--secure-required", *sys.argv[1:]]
+
+    # Use the windowless interpreter (pythonw.exe) for the GUI child so no
+    # console window is ever attached, even if this wrapper was started with
+    # console python.exe. Fall back to sys.executable if pythonw is absent.
+    pyw = Path(sys.executable).with_name("pythonw.exe")
+    launcher = str(pyw) if pyw.exists() else sys.executable
+    args = [launcher, str(main_py), "--secure-required", *sys.argv[1:]]
 
     env = dict(os.environ)
     env["SFFS_OS_ISOLATION"] = "windows_job"

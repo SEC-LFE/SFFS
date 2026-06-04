@@ -335,21 +335,31 @@ class Installer:
     def _create_launchers(self) -> None:
         drive = Path(self.drive)
 
-        # ── RUN_SFFS.bat (Windows) ──────────────────────────────────────────
+        # ── RUN_SFFS.bat (Windows) — GUI, runs with NO terminal window ──────
+        # Uses the windowless interpreter (pythonw.exe) and relaunches itself
+        # hidden via WScript so no console is ever shown. No 'pause' (a GUI app
+        # must not leave a terminal on screen).
         bat = (
             "@echo off\r\n"
-            "title SFFS - Smart File Fortify System\r\n"
+            "setlocal\r\n"
+            "if exist \"%~dp0python\\pythonw.exe\" (\r\n"
+            "    set \"PYW=%~dp0python\\pythonw.exe\"\r\n"
+            ") else (\r\n"
+            "    set \"PYW=pythonw\"\r\n"
+            ")\r\n"
+            "if not defined SFFS_HIDDEN (\r\n"
+            "    set SFFS_HIDDEN=1\r\n"
+            "    >\"%temp%\\sffs_launch.vbs\" echo CreateObject(\"WScript.Shell\").Run \"cmd /c \"\"\"\"%~f0\"\"\"\" %*\", 0, False\r\n"
+            "    wscript //nologo \"%temp%\\sffs_launch.vbs\"\r\n"
+            "    del \"%temp%\\sffs_launch.vbs\" >nul 2>&1\r\n"
+            "    exit /b\r\n"
+            ")\r\n"
             "cd /d \"%~dp0\"\r\n"
             "set PYTHONPATH=%~dp0code1;%~dp0code2;%~dp0code3;%~dp0main-code\r\n"
-            "if exist python\\python.exe (\r\n"
-            "    python\\python.exe main-code\\main.py %*\r\n"
-            ") else (\r\n"
-            "    python main-code\\main.py %*\r\n"
-            ")\r\n"
-            "if errorlevel 1 pause\r\n"
+            "\"%PYW%\" main-code\\main.py %*\r\n"
         )
         (drive / "RUN_SFFS.bat").write_text(bat, encoding="utf-8")
-        self.log("  Created RUN_SFFS.bat", "OK")
+        self.log("  Created RUN_SFFS.bat (windowless)", "OK")
 
         # ── RUN_SFFS_HEADLESS.bat ───────────────────────────────────────────
         bat_headless = (
