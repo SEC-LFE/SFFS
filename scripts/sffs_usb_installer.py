@@ -232,9 +232,12 @@ class Installer:
                 continue
             if dst.exists():
                 shutil.rmtree(dst)
+            # NB: google_client_secret.json is intentionally INCLUDED — it is the
+            # bundled desktop-app OAuth client (semi-public by Google's installed-app
+            # guidance) that lets cloud backup authenticate with zero user setup.
+            # Excluding it broke Google Drive backup on the portable USB install.
             shutil.copytree(src, dst, ignore=shutil.ignore_patterns(
                 "__pycache__", "*.pyc", "test_output", ".git", "*.egg-info",
-                "google_client_secret.json",
             ))
             self.log(f"  Copied {dirname}/", "OK")
 
@@ -296,12 +299,25 @@ class Installer:
 
     def _install_pip(self) -> None:
         py_exe = Path(self.drive) / "python" / "python.exe"
-        # Enable site-packages for embeddable python
+        # Enable site-packages for embeddable python.
+        # The embeddable ._pth ships with a commented "#import site" line which
+        # disables site-packages, so "python -m pip" fails with "No module named
+        # pip" even after get-pip.py installs it. Uncomment that line (a naive
+        # `"import site" in content` check is fooled by the "#import site"
+        # substring and silently leaves site disabled).
         for pth in py_exe.parent.glob("python*._pth"):
-            content = pth.read_text(encoding="utf-8")
-            if "import site" not in content:
-                pth.write_text(content + "\nimport site\n", encoding="utf-8")
-                self.log("  Enabled site-packages in ._pth", "INFO")
+            lines = pth.read_text(encoding="utf-8").splitlines()
+            out, has_site = [], False
+            for ln in lines:
+                if ln.lstrip("# ").strip() == "import site":
+                    out.append("import site")
+                    has_site = True
+                else:
+                    out.append(ln)
+            if not has_site:
+                out.append("import site")
+            pth.write_text("\n".join(out) + "\n", encoding="utf-8")
+            self.log("  Enabled site-packages in ._pth", "INFO")
 
         pip_check = _run([str(py_exe), "-m", "pip", "--version"])
         if pip_check.returncode == 0:
@@ -335,21 +351,31 @@ class Installer:
     def _create_launchers(self) -> None:
         drive = Path(self.drive)
 
-        # ── RUN_SFFS.bat (Windows) ──────────────────────────────────────────
+        # ── RUN_SFFS.bat (Windows) — GUI, runs with NO terminal window ──────
+        # Uses the windowless interpreter (pythonw.exe) and relaunches itself
+        # hidden via WScript so no console is ever shown. No 'pause' (a GUI app
+        # must not leave a terminal on screen).
         bat = (
             "@echo off\r\n"
-            "title SFFS - Smart File Fortify System\r\n"
+            "setlocal\r\n"
+            "if exist \"%~dp0python\\pythonw.exe\" (\r\n"
+            "    set \"PYW=%~dp0python\\pythonw.exe\"\r\n"
+            ") else (\r\n"
+            "    set \"PYW=pythonw\"\r\n"
+            ")\r\n"
+            "if not defined SFFS_HIDDEN (\r\n"
+            "    set SFFS_HIDDEN=1\r\n"
+            "    >\"%temp%\\sffs_launch.vbs\" echo CreateObject(\"WScript.Shell\").Run \"cmd /c \"\"\"\"%~f0\"\"\"\" %*\", 0, False\r\n"
+            "    wscript //nologo \"%temp%\\sffs_launch.vbs\"\r\n"
+            "    del \"%temp%\\sffs_launch.vbs\" >nul 2>&1\r\n"
+            "    exit /b\r\n"
+            ")\r\n"
             "cd /d \"%~dp0\"\r\n"
             "set PYTHONPATH=%~dp0code1;%~dp0code2;%~dp0code3;%~dp0main-code\r\n"
-            "if exist python\\python.exe (\r\n"
-            "    python\\python.exe main-code\\main.py %*\r\n"
-            ") else (\r\n"
-            "    python main-code\\main.py %*\r\n"
-            ")\r\n"
-            "if errorlevel 1 pause\r\n"
+            "\"%PYW%\" main-code\\main.py %*\r\n"
         )
         (drive / "RUN_SFFS.bat").write_text(bat, encoding="utf-8")
-        self.log("  Created RUN_SFFS.bat", "OK")
+        self.log("  Created RUN_SFFS.bat (windowless)", "OK")
 
         # ── RUN_SFFS_HEADLESS.bat ───────────────────────────────────────────
         bat_headless = (
@@ -906,15 +932,18 @@ def headless_install(drive_letter: str) -> int:
 # ─── Entry point ──────────────────────────────────────────────────────────────
 
 def main() -> int:
-    # Auto-elevate if not admin
+    # Headless mode: python sffs_usb_installer.py --headless E
+    # Handled before the admin gate — copying to a USB drive needs no
+    # elevation, and elevating here would re-spawn a detached process whose
+    # output the caller never sees.
+    if len(sys.argv) >= 3 and sys.argv[1] == "--headless":
+        return headless_install(sys.argv[2])
+
+    # GUI mode: auto-elevate if not admin
     if not is_admin():
         print("Requesting administrator privileges…")
         elevate_admin()
         return 0
-
-    # Headless mode: python sffs_usb_installer.py --headless E
-    if len(sys.argv) >= 3 and sys.argv[1] == "--headless":
-        return headless_install(sys.argv[2])
 
     app = InstallerApp()
     app.mainloop()

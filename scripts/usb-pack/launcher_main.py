@@ -1,4 +1,4 @@
-"""
+r"""
 launcher_main.py — SFFS Launcher Entry Point
 
 Finds the hidden partition with .sffs_marker, mounts it to S:\,
@@ -119,75 +119,70 @@ def _show_error(title: str, message: str) -> None:
         print(f"[{title}] {message}", file=sys.stderr)
 
 
+def _spawn_sffs(root: Path) -> int:
+    """Run main.py from an SFFS install rooted at *root*. Returns child rc."""
+    main_py = root / "main-code" / "main.py"
+    # Prefer the windowless interpreter so no console flashes for the GUI.
+    pyw = root / "python" / "pythonw.exe"
+    py = root / "python" / "python.exe"
+    interp = pyw if pyw.exists() else (py if py.exists() else Path(sys.executable))
+
+    env = os.environ.copy()
+    env["SFFS_ROOT"] = str(root)
+    env["PYTHONPATH"] = (
+        str(root / "code1") + os.pathsep
+        + str(root / "code2") + os.pathsep
+        + str(root / "code3") + os.pathsep
+        + str(root / "main-code") + os.pathsep
+        + env.get("PYTHONPATH", "")
+    )
+    cmd = [str(interp), str(main_py)] + sys.argv[1:]
+    return subprocess.run(cmd, env=env).returncode
+
+
+def _run_local(root: Path) -> "int | None":
+    """Plain-copy fallback: launch SFFS straight from the exe's own drive.
+
+    The USB installer (sffs_usb_installer.py) copies the project flat onto the
+    drive — no hidden partition. In that layout the exe sits next to main-code/
+    and python/, so just run it in place. Returns None if this isn't a valid
+    SFFS root (so the caller can show an error)."""
+    if not (root / "main-code" / "main.py").exists():
+        return None
+    return _spawn_sffs(root)
+
+
 def main() -> int:
-    # Step 1: Find the hidden SFFS partition
+    exe_path = Path(sys.executable if getattr(sys, "frozen", False) else sys.argv[0])
+    local_root = exe_path.parent
+
+    # Step 1: Look for a hidden SFFS partition (sffs_usb_pack.py scheme).
     volume_guid = _find_sffs_volume_guid()
-    if not volume_guid:
-        _show_error(
-            "SFFS Launcher",
-            "No SFFS partition found.\n\n"
-            "Make sure the USB is plugged in and has been set up with "
-            "sffs_usb_pack.py.",
-        )
-        return 1
-
-    # Step 2: Try to mount the hidden volume
-    if not mount_hidden_volume(volume_guid, DRIVE_LETTER):
-        # Mount failed — likely needs admin
-        if not _is_admin():
-            _run_as_admin()
-            return 0  # Admin process replaces us
-        else:
-            _show_error(
-                "SFFS Launcher",
-                f"Failed to mount hidden partition to {DRIVE_LETTER}:\\.\n\n"
-                "Please run as Administrator and try again.",
-            )
-            return 1
-
-    try:
-        # Step 3: Verify the mount — check main-code dir exists on hidden partition
-        root = Path(f"{DRIVE_LETTER}:\\")
-        if not root.exists() or not (root / "main-code").exists():
+    if volume_guid and mount_hidden_volume(volume_guid, DRIVE_LETTER):
+        try:
+            root = Path(f"{DRIVE_LETTER}:\\")
+            main_py = root / "main-code" / "main.py"
+            if root.exists() and main_py.exists():
+                return _spawn_sffs(root)
             _show_error("SFFS Launcher", f"Mount verification failed: {root}")
             return 1
+        finally:
+            unmount_hidden_volume(DRIVE_LETTER)
 
-        # Step 4: Find Python and main entry point on hidden partition
-        python_exe = root / "python" / "python.exe"
-        main_py = root / "main-code" / "main.py"
+    # Step 2: Plain-copy fallback — run from the exe's own drive.
+    rc = _run_local(local_root)
+    if rc is not None:
+        return rc
 
-        if not python_exe.exists():
-            _show_error(
-                "SFFS Launcher",
-                f"Python not found on hidden partition:\n{python_exe}",
-            )
-            return 1
-
-        if not main_py.exists():
-            _show_error(
-                "SFFS Launcher",
-                f"Main entry point not found on hidden partition:\n{main_py}",
-            )
-            return 1
-
-        # Step 5: Spawn the SFFS application
-        env = os.environ.copy()
-        env["SFFS_ROOT"] = str(root)
-        env["PYTHONPATH"] = (
-            str(root / "code1") + os.pathsep
-            + str(root / "code2") + os.pathsep
-            + str(root / "code3") + os.pathsep
-            + str(root / "main-code") + os.pathsep
-            + env.get("PYTHONPATH", "")
-        )
-
-        cmd = [str(python_exe), str(main_py)] + sys.argv[1:]
-        proc = subprocess.run(cmd, env=env)
-        return proc.returncode
-
-    finally:
-        # Step 6: Unmount the hidden partition
-        unmount_hidden_volume(DRIVE_LETTER)
+    # Neither scheme found a valid install.
+    _show_error(
+        "SFFS Launcher",
+        "No SFFS installation found.\n\n"
+        f"Looked for main-code\\main.py on the hidden partition and next to "
+        f"this launcher ({local_root}).\n\n"
+        "Re-run the SFFS USB installer.",
+    )
+    return 1
 
 
 if __name__ == "__main__":

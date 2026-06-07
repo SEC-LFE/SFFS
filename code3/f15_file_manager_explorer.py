@@ -55,7 +55,7 @@ class FileManagerExplorer(QWidget):
         self._list.setModel(self._model)
         self._list.setRootIsDecorated(False)
         self._list.setItemsExpandable(False)
-        self._list.setEditTriggers(QAbstractItemView.EditTrigger.NoEdit)
+        self._list.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
 
         splitter = QSplitter(Qt.Orientation.Horizontal)
         splitter.addWidget(self._tree)
