@@ -158,12 +158,16 @@ def main() -> int:
     repo_root = Path(__file__).resolve().parent.parent
     main_py = repo_root / "main-code" / "main.py"
 
-    # Use the windowless interpreter (pythonw.exe) for the GUI child so no
-    # console window is ever attached, even if this wrapper was started with
-    # console python.exe. Fall back to sys.executable if pythonw is absent.
+    # Non-GUI modes (--test, --headless, --student) need a real console so the
+    # child's pytest/CLI output and stdout handles work; only the actual GUI
+    # launch should use the windowless interpreter (pythonw.exe). Using pythonw
+    # for --test breaks main.py's run_tests() (pythonw -m pytest has no console).
+    forwarded = sys.argv[1:]
+    console_modes = {"--test", "--headless", "--student"}
+    use_pythonw = not any(a in console_modes for a in forwarded)
     pyw = Path(sys.executable).with_name("pythonw.exe")
-    launcher = str(pyw) if pyw.exists() else sys.executable
-    args = [launcher, str(main_py), "--secure-required", *sys.argv[1:]]
+    launcher = str(pyw) if (use_pythonw and pyw.exists()) else sys.executable
+    args = [launcher, str(main_py), "--secure-required", *forwarded]
 
     env = dict(os.environ)
     env["SFFS_OS_ISOLATION"] = "windows_job"
