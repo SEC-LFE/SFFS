@@ -899,11 +899,18 @@ class FilesPage(QWidget):
             self._prog.setVisible(False)
 
     def _on_collect_entropy(self) -> None:
+        # Open the visual dialog so the user sees the canvas — don't just arm
+        # the gate silently, which would bypass the canvas on the next Encrypt.
         try:
-            from mouse_entropy import start_collection
-            start_collection()
+            from mouse_entropy import is_entropy_ready
+            if is_entropy_ready():
+                # Already ready — just reflect that in the status bar.
+                return
         except Exception:
             pass
+        parent = self.window()
+        dlg = EntropyCollectorDialog(parent)
+        dlg.exec()
 
     def _on_reset_entropy(self) -> None:
         try:
@@ -940,12 +947,6 @@ class FilesPage(QWidget):
             pass
 
     def mouseMoveEvent(self, e) -> None:
-        if self._core is not None:
-            try:
-                from mouse_entropy import feed_mouse_entropy
-                feed_mouse_entropy(e.pos().x(), e.pos().y())
-            except Exception:
-                pass
         super().mouseMoveEvent(e)
 
 
@@ -1684,15 +1685,6 @@ class SFFSWindow(QMainWindow):
 
     def set_security_status(self, text: str, kind: str) -> None:
         self._topbar.set_security(text, kind)
-
-    def mouseMoveEvent(self, e) -> None:
-        if self._core is not None:
-            try:
-                from mouse_entropy import feed_mouse_entropy
-                feed_mouse_entropy(e.pos().x(), e.pos().y())
-            except Exception:
-                pass
-        super().mouseMoveEvent(e)
 
     def _do_encrypt(self, path: str) -> None:
         if self._core is None:
