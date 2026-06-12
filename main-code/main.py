@@ -112,9 +112,20 @@ def run_headless_demo(args) -> None:
 def run_full_app() -> int:
     """Launch SFFS with the modern UI (sffs_ui.py)."""
     from PyQt6.QtWidgets import QApplication, QDialog
-    from sffs_ui import LoginWindow, SFFSWindow, apply_theme
+    from sffs_ui import LoginWindow, SFFSWindow, apply_theme, app_icon
     from sffs_core import SFFSCore
     from os_isolation import detect_isolation
+
+    # Windows: bind an explicit AppUserModelID so the taskbar shows the SFFS
+    # logo instead of the generic Python interpreter icon. No-op elsewhere.
+    if sys.platform == "win32":
+        try:
+            import ctypes
+            ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(
+                "SFFS.SmartFileFortifySystem"
+            )
+        except Exception:
+            pass
 
     # Auto-activate Windows Job Object isolation when not launched via sffs.bat.
     # On Linux this is a no-op; on Windows it creates the Job Object and sets
@@ -130,7 +141,24 @@ def run_full_app() -> int:
     core = SFFSCore()
     core.initialize()
 
+    # Hidden vault: hide the SFFS data folder from Explorer for this session
+    # (Hidden+System attributes — reliable, no admin). If the vault is its own
+    # drive letter, also best-effort hide that letter via NoDrives. Access stays
+    # available by full path, so SFFS keeps reading/writing it normally. The
+    # actual confidentiality comes from SFFS's AES encryption, not the hiding.
+    _vault_letter = None
+    try:
+        from vault_drive import find_vault_letter, hide_vault
+        _vault_letter = find_vault_letter() if core.paths.get("is_vault") else None
+        _res = hide_vault(core.paths["data_dir"], _vault_letter)
+        if _res.get("folder_hidden") or _res.get("letter_hidden"):
+            print(f"[SFFS] Vault hidden  folder={_res['folder_hidden']} "
+                  f"letter={_res['letter_hidden']}")
+    except Exception:
+        _vault_letter = None
+
     app = QApplication.instance() or QApplication(sys.argv)
+    app.setWindowIcon(app_icon())
     apply_theme(app)
 
     # ── Login ──────────────────────────────────────────────────────────────
@@ -170,6 +198,14 @@ def run_full_app() -> int:
     try:
         if core.session_token:
             core.logout()
+    except Exception:
+        pass
+    # Restore vault visibility when the app exits, so the hidden state does not
+    # persist beyond the SFFS session.
+    try:
+        from vault_drive import show_vault
+        show_vault(core.paths["data_dir"], _vault_letter)
+        print("[SFFS] Vault visibility restored")
     except Exception:
         pass
     return rc

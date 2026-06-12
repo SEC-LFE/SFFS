@@ -210,6 +210,36 @@ class SFFSCore:
         except Exception:
             pass
 
+    def _abort_login_session(self) -> None:
+        """Tear down a partially-initialised session after a post-auth failure.
+
+        Mirrors the cleanup in logout() but is safe to call when only some
+        session state exists (sandbox created, token issued, password snapshotted)
+        and the keystore/provenance setup has NOT completed.
+        """
+        if self.session_token and self._auth_db:
+            try:
+                terminateSession(self.session_token, self._auth_db)
+            except Exception:
+                pass
+        if self.sandbox:
+            try:
+                destroySandbox(Path(self.sandbox["sandbox_path"]))
+            except Exception:
+                pass
+        if self._session_password is not None:
+            try:
+                secureMemoryWipe(self._session_password)
+            except Exception:
+                pass
+            self._session_password = None
+        self.sandbox = None
+        self.session_token = None
+        self._user_id = None
+        self.current_user = None
+        self._wrap_store = None
+        self._provenance_table = None
+
     def login(self, username: str, password: bytearray) -> dict:
         assert self.paths and self._auth_db
         # Snapshot the password BEFORE authenticateUser runs — it wipes the
@@ -237,14 +267,38 @@ class SFFSCore:
                 wrap_key = self._derive_wrap_key(_pw_str)
             finally:
                 del _pw_str
-            wrap_db_path = self.paths["keys_dir"] / "wrap_store.db"
-            self._wrap_store = WrapStore(wrap_db_path, wrap_key, tmp_dir=Path(self.sandbox["temp_dir"]))
-            self._wrap_store.initialize()
-            prov_path = self.paths["data_dir"] / "provenance.json"
-            # _session_password is guaranteed set above (line 203)
-            self._provenance_table = ProvenanceTable(
-                prov_path, self._session_password.decode("utf-8")
-            )
+            # Keystore / provenance unlock can fail if the on-disk wrap_store.enc
+            # or provenance.json was created with a DIFFERENT password (e.g. the
+            # auth database was reset but the keystore was not, leaving orphaned
+            # state). AES-GCM then raises "MAC check failed". Catch it here so the
+            # GUI gets a clear, actionable error instead of an unhandled crash
+            # immediately after a successful credential check.
+            try:
+                wrap_db_path = self.paths["keys_dir"] / "wrap_store.db"
+                self._wrap_store = WrapStore(wrap_db_path, wrap_key, tmp_dir=Path(self.sandbox["temp_dir"]))
+                self._wrap_store.initialize()
+                prov_path = self.paths["data_dir"] / "provenance.json"
+                # _session_password is guaranteed set above (line 203)
+                self._provenance_table = ProvenanceTable(
+                    prov_path, self._session_password.decode("utf-8")
+                )
+            except ValueError as exc:
+                # Most likely "MAC check failed" — wrong key for an existing
+                # keystore. Roll back the half-opened session and report cleanly.
+                if "MAC check failed" in str(exc):
+                    self._abort_login_session()
+                    return {
+                        "authenticated": False,
+                        "status": "keystore_mismatch",
+                        "message": (
+                            "Keystore could not be unlocked with this password. "
+                            "The key store may belong to a different account or be "
+                            "left over from a reset. Reset the keys "
+                            "(scripts/reset_sffs_data.py --keys) and register again."
+                        ),
+                    }
+                self._abort_login_session()
+                raise
             # Start sandbox watcher — wipes any file placed in decrypted_dir
             # that wasn't put there by this SFFS session.
             self._start_sandbox_watcher(Path(self.sandbox["decrypted_dir"]))

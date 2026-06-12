@@ -110,6 +110,41 @@ def initDriveDetection() -> dict:
     else:
         volume_root = _linux_mount_root(app_dir)
 
+    # Hidden vault drive override: if a vault volume (label SFFS_VAULT / marker,
+    # or SFFS_VAULT_DRIVE=X) is mounted, store all SFFS data there. The launcher
+    # hides its drive letter from Explorer (see code2/vault_drive.py); access is
+    # by full path so detection just points the data root at the vault.
+    _vault_root = None
+    try:
+        from vault_drive import detect_vault_root
+        _vault_root = detect_vault_root()
+    except Exception:
+        _vault_root = None
+    if _vault_root is not None:
+        usb_root = _vault_root
+        is_removable = True
+        label = "SFFS_VAULT"
+        data_dir = usb_root / "sffs_data"
+        paths_map = {
+            "usb_root": usb_root,
+            "app_dir": app_dir,
+            "data_dir": data_dir,
+            "keys_dir": data_dir / "keys",
+            "sandbox_dir": data_dir / "sandbox",
+            "logs_dir": data_dir / "logs",
+            "config_dir": data_dir / "config",
+            "backups_dir": data_dir / "backups",
+            "platform": sysname,
+            "is_removable": is_removable,
+            "drive_label": label,
+            "is_vault": True,
+            "free_space_gb": getAvailableSpace(usb_root)["free_gb"],
+        }
+        for key in ("data_dir", "keys_dir", "sandbox_dir", "logs_dir",
+                    "config_dir", "backups_dir"):
+            paths_map[key].mkdir(parents=True, exist_ok=True)
+        return paths_map
+
     _, is_removable, opts = _partition_for_path(app_dir)
     if not is_removable:
         warnings.warn(

@@ -1,12 +1,31 @@
 #!/usr/bin/env bash
 # SFFS Linux launcher — bash sffs.sh   or   chmod +x sffs.sh && ./sffs.sh
+#
+# The app code lives on the SFFS_VAULT volume; this launcher may sit alone on the
+# visible volume, so it locates the vault (the mount holding .sffs_vault) at runtime
+# and falls back to its own directory for dev / single-folder layouts.
 
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$SCRIPT_DIR"
 
 echo "=== SFFS - Smart File Fortify System ==="
+
+# ── Locate the app root ───────────────────────────────────────────────────────
+APP="$SCRIPT_DIR"
+if [ ! -d "$APP/main-code" ]; then
+    for m in /media/*/* /run/media/*/* /mnt/* "$SCRIPT_DIR"/*; do
+        if [ -f "$m/.sffs_vault" ] && [ -d "$m/main-code" ]; then
+            APP="$m"
+            break
+        fi
+    done
+fi
+if [ ! -d "$APP/main-code" ]; then
+    echo "ERROR: could not locate the SFFS app (no SFFS_VAULT volume with main-code/)."
+    exit 1
+fi
+cd "$APP"
 
 PYTHON="$(command -v python3 || command -v python || true)"
 if [ -z "$PYTHON" ]; then

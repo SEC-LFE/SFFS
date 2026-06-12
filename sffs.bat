@@ -1,15 +1,35 @@
 @echo off
 :: SFFS Windows Launcher — runs the GUI with NO terminal window.
-:: Double-click to run from USB or the project folder.
-setlocal
+:: The app code + bundled Python live on the hidden SFFS_VAULT partition; this
+:: launcher sits alone on the visible partition and locates the vault at runtime.
+:: Double-click to run.
+setlocal EnableDelayedExpansion
 
-:: Prefer the windowless interpreter (pythonw.exe) so no console is attached.
-if exist "%~dp0python\pythonw.exe" (
-    set "PYW=%~dp0python\pythonw.exe"
-    set "PY=%~dp0python\python.exe"
+:: ── Locate the app root ───────────────────────────────────────────────────────
+:: Resolution order:
+::   1. SFFS_VAULT partition — a drive holding .sffs_vault marker + python\pythonw.exe
+::   2. bundled  %~dp0python\pythonw.exe   (single-folder portable build)
+::   3. project  %~dp0.venv\Scripts\...     (local dev)
+set "APP="
+for %%D in (C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (
+    if not defined APP if exist "%%D:\.sffs_vault" if exist "%%D:\python\pythonw.exe" set "APP=%%D:\"
+)
+if not defined APP if exist "%~dp0python\pythonw.exe" set "APP=%~dp0"
+if not defined APP if exist "%~dp0.venv\Scripts\pythonw.exe" set "APP=%~dp0"
+
+if not defined APP (
+    echo SFFS: could not locate the app. No SFFS_VAULT partition found and no local
+    echo python\ or .venv next to this launcher.
+    pause
+    exit /b 1
+)
+
+if exist "%APP%python\pythonw.exe" (
+    set "PYW=%APP%python\pythonw.exe"
+    set "PY=%APP%python\python.exe"
 ) else (
-    set "PYW=pythonw"
-    set "PY=python"
+    set "PYW=%APP%.venv\Scripts\pythonw.exe"
+    set "PY=%APP%.venv\Scripts\python.exe"
 )
 
 :: On first pass, relaunch this script fully hidden via WScript (window style 0)
@@ -26,12 +46,13 @@ exit /b
 
 :run
 :: First-run dependency install (silent — no console output).
-if not exist "%~dp0.deps_installed" (
-    "%PY%" -m pip install -r "%~dp0main-code\requirements.txt" --quiet >nul 2>&1
-    echo installed> "%~dp0.deps_installed"
+if not exist "%APP%.deps_installed" (
+    "%PY%" -m pip install -r "%APP%main-code\requirements.txt" --quiet >nul 2>&1
+    echo installed> "%APP%.deps_installed"
 )
 
-cd /d "%~dp0"
+cd /d "%APP%"
 :: Launch via the windowless interpreter — no terminal, no pause.
-"%PYW%" code2\windows_job_wrapper.py %*
+:: windows_job_wrapper.py resolves the repo root from its own location (the vault).
+"%PYW%" "%APP%code2\windows_job_wrapper.py" %*
 endlocal
