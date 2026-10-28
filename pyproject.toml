@@ -1,0 +1,34 @@
+[project]
+name = "sffs"
+version = "0.1.0"
+description = "Smart File Fortify System - portable selective file encryption for USB drives"
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "MIT" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["main-code", "code1", "code2", "code3"]
+addopts = "-q"
+markers = [
+    "slow: marks tests as slow",
+    "gui: marks GUI tests (may require display)",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+extend-exclude = ["sffs_data", "graphify-out", "apps"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+warn_unused_ignores = true
+files = ["main-code", "code1", "code2", "code3"]

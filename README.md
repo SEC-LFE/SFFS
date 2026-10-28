@@ -109,7 +109,7 @@ Full detail: [`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md).
 ## Verify install
 
 ```bash
-python sffs_usb_setup.py --verify
+python scripts/sffs_usb_setup.py --verify
 python main-code/main.py --test
 ```
 
